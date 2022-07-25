@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from "styled-components"
-import { ColContainer } from '../components/Container'
-import "../home.css"
+import { ColContainer } from '../components/commons/Container'
 
 const Home = () => {
   return (

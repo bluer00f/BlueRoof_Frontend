@@ -13,4 +13,5 @@ export const RowContainer = styled(Flex)`
 
 export const ColContainer = styled(Flex)`
 	flex-direction: column;
+	align-items: center;
 `;
