@@ -26,7 +26,7 @@ export default SideMenu
 
 const SideMenuContainer=styled(ColContainer)`
     width: 20%;
-    height: 100vh;
+    height: 90vh;
     background: rgba(0, 40, 255, 0.8);
     border-radius: 0px 20px 20px 0px;
     padding-top: 100px;

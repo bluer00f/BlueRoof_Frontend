@@ -23,17 +23,19 @@ const EditSubscription = () => {
 
 export default EditSubscription
 const EditSubscriptionContainer=styled(RowContainer)`
-    
+    height: auto;
 `
 const RightContainer=styled(ColContainer)`
  width: 80%;
 `
 const ContentContainer=styled(ColContainer)`
     width: 80%;
-   // height:500px;
+    height:80vh;
     border: 1px solid #D3D3D3;
     border-radius: 25px;
     padding: 50px 0;
+    margin: 50px 0;
+    overflow: auto;
 `
 const Content=styled.div`
 width: 80%;

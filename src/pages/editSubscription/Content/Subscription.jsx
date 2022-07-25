@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { BlueRoundBtn } from '../../../components/commons/Buttons'
-import { RowContainer } from '../../../components/commons/Container'
+import { ColContainer, RowContainer } from '../../../components/commons/Container'
 import { BlackText } from '../../../components/commons/Font'
 import Flex from '../../../components/commons/Flex'
+import { RoundInput } from '../../../components/commons/Inputs'
 const Subscription = () => {
     const ranks=["1위","2위"];
     const [specialRanking, setSpecialRanking]=useState("1위");
@@ -54,6 +55,29 @@ const Subscription = () => {
         <BtnContainer>
             <BlueRoundBtn>임시저장</BlueRoundBtn>
         </BtnContainer>
+        <BlackText size="36px" weight="700" style={{marginTop:"50px"}}>ㅣ 2년 내 당첨 이력</BlackText>
+        <RadioBtns style={{marginBottom:"10px"}}>
+        {ranks.map((rank)=>(
+                    <Label>
+                        <RadioBtn
+                            type="radio"
+                            value={rank}
+                            checked={ranking===rank}
+                            onChange={ClickRank}
+                        ></RadioBtn>
+                        {rank}
+                    </Label>
+                ))}        
+        </RadioBtns>
+        <ColContainer style={{gap:"20px", margin:"30px 0"}}>
+        <RoundInput width={"600px"} height={"50px"} placeholder="당첨일자"/>
+        <RoundInput width={"600px"} height={"50px"} placeholder="당첨지역"/>
+        <RowContainer style={{gap:"10px"}}>
+            <RoundInput width={"200px"} height={"50px"} placeholder="우편번호"></RoundInput>
+            <RoundInput width={"390px"} height={"50px"} placeholder="당첨아파트명"/>
+        </RowContainer>
+       
+        </ColContainer>
         
       </SubscriptionContainer>
    
@@ -85,4 +109,6 @@ const Label=styled.label`
 `
 const BtnContainer=styled(Flex)`
     justify-content: flex-end;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #B3B3B3;
 `
