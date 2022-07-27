@@ -1,23 +1,57 @@
 import React from 'react'
 import styled from "styled-components"
-import { ColContainer } from '../../../components/commons/Container'
-import { Buttons } from '../../../components/commons/Buttons'
+import { ColContainer, RowContainer } from '../../../components/commons/Container'
+import { BlueRoundBtn} from '../../../components/commons/Buttons'
+import { useState } from 'react'
+import { RoundInput } from '../../../components/commons/Inputs'
+import Flex from '../../../components/commons/Flex'
+import { BlueText } from '../../../components/commons/Font'
 
 const Login = () => {
+    const [inputId, setInputId] = useState('')
+    const [inputPw, setInputPw] = useState('')
+
+    const handleInputId = (e) => {
+        setInputId(e.target.vaule)
+    }
+
+    const handleInputPw = (e) => {
+        setInputPw(e.target.vaule)
+    }
+
+    const onClickLogin = () => {
+        console.log('click login')
+    }
+
     return (
-        <ColContainer>
-            <TopContent>
-                
-                </TopContent>
-        </ColContainer>
+        <LoginContainer>
+            <ColContainer style={{gap:"10px", margin:"30px 0"}}>
+                <RoundInput value={inputId} _onChange={handleInputId} width={"300px"} height={"50px"} placeholder="아이디"/>
+                <RoundInput value={inputPw} _onChange={handleInputPw} width={"300px"} height={"50px"} placeholder="비밀번호"/>
+            </ColContainer>
+            <BtnContainer style={{gap:"20px"}}>
+                <BlueRoundBtn onClick={onClickLogin} style={{width:"260px", height:"30px"}}>로그인</BlueRoundBtn>
+            </BtnContainer>
+            <RowContainer style={{gap:"10px"}}>
+                <CenterContainer style={{margin:"0 auto"}}>
+                    <BlueText style={{fontSize:"14px", fontWeight:"bold"}}>아직 계정이 없습니까?</BlueText>
+                    <a href="#" style={{fontSize:"14px", fontWeight:"bold", color:"#0028FF", marginLeft:"10px"}}>회원가입</a>
+                </CenterContainer>
+            </RowContainer>
+        </LoginContainer>
     )
 }
-//<Input label="아이디" _onChange={()=>{console.log("아이디 입력");}}/>
-//<Input label="비밀번호" _onChange={()=>{console.log("비밀번호 입력");}}/>
-//<Buttons text="로그인" _onClick={()=>{console.log("로그인");}}></Buttons>
-            
+
 export default Login
 
-const TopContent=styled(ColContainer)`
-    
+const LoginContainer=styled.div`
+    padding-top: 150px;
+`
+
+const BtnContainer=styled(Flex)`
+    justify-content: center;
+    padding-bottom: 10px;
+    text-align: center;
+`
+const CenterContainer=styled(Flex)`
 `
