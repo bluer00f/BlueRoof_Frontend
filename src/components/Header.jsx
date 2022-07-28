@@ -21,7 +21,7 @@ const Header = () => {
       </NavDropdown>
     </Nav>
     <Nav>
-      <Nav.Link eventKey={2} href="#memes">
+      <Nav.Link eventKey={2} href="/login">
         로그인
       </Nav.Link>
     </Nav>

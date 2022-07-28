@@ -10,13 +10,15 @@ export const BorderWhiteBtn = styled(Button)`
 	background-color: transparent;
 	border: solid 1px #FFFFFF;
 	font-size: 16px;
-    color: #FFFFFF;
+    color: #000000;
 	padding: ${({ padding }) => (padding ? padding : "10px 20px")};
 `;
+
 export const BlueRoundBtn=styled(Button)`
 	background: #0028FF;
 	border-radius: 40px;
 	color: #FFFFFF;
+
 `
 export const RadioBtn=styled.input`
 appearance: none;

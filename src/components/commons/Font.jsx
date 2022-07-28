@@ -12,3 +12,9 @@ export const WhiteText=styled.div`
     font-weight: ${props=> props.weight};
     margin-top: ${props=> props.marginTop};
 `
+export const BlueText=styled.div`
+    font-size: ${props=> props.size ? props.size : "16px"};
+    color: #0028FF;
+    font-weight: ${props=> props.weight};
+    margin-top: ${props=> props.marginTop};
+`
