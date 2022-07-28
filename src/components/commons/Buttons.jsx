@@ -10,7 +10,7 @@ export const BorderWhiteBtn = styled(Button)`
 	background-color: transparent;
 	border: solid 1px #FFFFFF;
 	font-size: 16px;
-    color: #FFFFFF;
+    color: #000000;
 	padding: ${({ padding }) => (padding ? padding : "10px 20px")};
 `;
 

@@ -2,13 +2,15 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import Flex from '../../../components/commons/Flex'
-import { ColContainer, RowContainer } from "../../../components/commons/Container";
+import { ColContainer, OverContainer, RowContainer } from "../../../components/commons/Container";
 import { RoundInput } from "../../../components/commons/Inputs";
 import { DropDownBtn } from "../../../components/commons/Dropdown";
+import '../../../App.css';
+import { BorderWhiteBtn } from "../../../components/commons/Buttons";
 
 const Signup = () => {
     const SexOptions = ["성별", "남", "여"];
-    const [Selected, setSelected] = useState("성별");
+    const [Selected, setSelected] = useState("");
     
     const handleSelect = (e) => {
         setSelected(e.target.value);
@@ -25,8 +27,16 @@ const Signup = () => {
 
     const [houseHolder, setHouseHolder] = useState("예")
     const [id, setId] = useState('')
+    const onClickIdCheck = () => {
+        console.log('ID 중복확인')
+    }
+
     const [pw, setPw] = useState('')
     const [email, setEmail] = useState('')
+    const onClickEmailCheck = () => {
+        console.log('email 중복확인')
+    }
+
     const [phoneNum, setPhonNum] = useState('')
     const [zipCode, setZipCode] = useState('')
     const [address, setAddress] = useState('')
@@ -39,20 +49,43 @@ const Signup = () => {
 
     return (
         <SignupContainer>
-            <ColContainer style={{width:"80%", margin:"0 auto"}}>
+            <ColContainer style={{width:"80%", margin:"0 auto", gap:"15px"}}>
                 <RowContainer style={{gap:"15px", marginTop:"50px"}}>
                     <UserImg />
-                    <RoundInput width={"300px"} height={"50px"} placeholder="이름"/>        
-                    <DropDownBtn width={"100px"} heigth={"50px"}>
-                        <select onChange={handleSelect} value={Selected}>
-                            {SexOptions.map((item) => (
-                                <option value={item} key={item}>
-                                    {item}
-                                </option>
-                            ))}
-                        </select>
-                    </DropDownBtn>
+                    <ColContainer style={{gap:"15px"}}>
+                        <RowContainer style={{gap:"15px"}}>
+                            <RoundInput width={"300px"} height={"50px"} placeholder="이름"/>        
+                            <select onChange={handleSelect} value={Selected}>
+                                {SexOptions.map((item) => (
+                                    <option value={item} key={item}>
+                                        {item}
+                                    </option>
+                                ))}
+                            </select>
+                        </RowContainer>
+                        <RowContainer>
+                            <RoundInput width={"420px"} height={"50px"} placeholder="생년월일"/>
+                        </RowContainer>
+                    </ColContainer>
                 </RowContainer>
+                <div position="relative">
+                    <RoundInput width={"535px"} height={"50px"} placeholder="아이디"/>
+                    <div style={{borderLeft:"1px solid #BECBFF", height:"50px", position:"absolute", marginTop:"-50px", marginLeft:"450px"}}/>
+                    <BorderWhiteBtn onClick={onClickIdCheck} style={{width:"100px", height:"50px", position:"absolute", marginLeft:"-115px", padding:"0", border:"transparent", textAlign:"right"}}>중복확인</BorderWhiteBtn>
+                </div>
+                <div>
+                    <RoundInput width={"535px"} height={"50px"} placeholder="비밀번호"/>
+                </div>
+                <div position="relative">
+                    <RoundInput width={"535px"} height={"50px"} placeholder="이메일"/>
+                    <div style={{borderLeft:"1px solid #BECBFF", height:"50px", position:"absolute", marginTop:"-50px", marginLeft:"450px"}}/>
+                    <BorderWhiteBtn onClick={onClickEmailCheck} style={{width:"100px", height:"50px", position:"absolute", marginLeft:"-115px", padding:"0", border:"transparent", textAlign:"right"}}>중복확인</BorderWhiteBtn>
+                </div>
+                <div position="relative">
+                    <RoundInput width={"535px"} height={"50px"} placeholder="전화번호"/>
+                    <div style={{borderLeft:"1px solid #BECBFF", height:"50px", position:"absolute", marginTop:"-50px", marginLeft:"450px"}}/>
+                    <BorderWhiteBtn onClick={onClickEmailCheck} style={{width:"100px", height:"50px", position:"absolute", marginLeft:"-115px", padding:"0", border:"transparent", textAlign:"right"}}>인증하기</BorderWhiteBtn>
+                </div>
             </ColContainer>
         </SignupContainer>
     )
@@ -70,9 +103,4 @@ const UserImg=styled.div`
     background-image: url('../imgs/home_bg.jpg');
     border: 1px solid #BECBFF;
     border-radius: 100px;
-`
-
-const DropBar=styled.div`
-    width: 100px;
-    height: 50px;
 `
