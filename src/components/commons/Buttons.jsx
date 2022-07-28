@@ -18,3 +18,16 @@ export const BlueRoundBtn=styled(Button)`
 	border-radius: 40px;
 	color: #FFFFFF;
 `
+export const RadioBtn=styled.input`
+appearance: none;
+width:20px;
+height:20px;
+border: 2px solid #000000;
+vertical-align: middle;
+border-radius: 100%; 
+margin-right: 10px;
+margin-bottom: 5px;
+:checked{
+	background-color: #000000;
+}
+`
