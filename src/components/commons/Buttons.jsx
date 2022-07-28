@@ -13,8 +13,9 @@ export const BorderWhiteBtn = styled(Button)`
     color: #FFFFFF;
 	padding: ${({ padding }) => (padding ? padding : "10px 20px")};
 `;
+
 export const BlueRoundBtn=styled(Button)`
 	background: #0028FF;
 	border-radius: 40px;
 	color: #FFFFFF;
-`
+`;

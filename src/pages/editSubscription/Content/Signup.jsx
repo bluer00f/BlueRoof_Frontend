@@ -4,24 +4,15 @@ import styled from "styled-components";
 import Flex from '../../../components/commons/Flex'
 import { ColContainer, RowContainer } from "../../../components/commons/Container";
 import { RoundInput } from "../../../components/commons/Inputs";
+import { DropDownBtn } from "../../../components/commons/Dropdown";
 
 const Signup = () => {
-    const sOption = [
-        {value: "null", name: "성별"},
-        {value: "male", name: "남"},
-        {value: "female", name: "여"}]
-    const sBox = (props) => {
-        return (
-            <select>
-                {props.option.map((option) => (
-                    <option
-                        key={option.value}
-                        value={option.value}>
-                            {option.name}
-                        </option>
-                ))}
-            </select>
-        );
+    const SexOptions = ["성별", "남", "여"];
+    const [Selected, setSelected] = useState("성별");
+    
+    const handleSelect = (e) => {
+        setSelected(e.target.value);
+        console.log(e.target.value);
     };
 
     const soldiers = ["예", "아니오"]
@@ -32,13 +23,6 @@ const Signup = () => {
 
     const [name, setName] = useState('')
 
-    /*function sex() {
-        const [sex, setSex] = useState("성별");
-        const handleSex = e => {
-            const {value} = e.target;
-            setSex(sexList.filter(el => el.value === value)[0].id);
-        }
-    }*/
     const [houseHolder, setHouseHolder] = useState("예")
     const [id, setId] = useState('')
     const [pw, setPw] = useState('')
@@ -58,8 +42,16 @@ const Signup = () => {
             <ColContainer style={{width:"80%", margin:"0 auto"}}>
                 <RowContainer style={{gap:"15px", marginTop:"50px"}}>
                     <UserImg />
-                    <RoundInput width={"300px"} height={"50px"} placeholder="이름"/>
-                    <sBox options={sOption} style={{marginTop:"100px"}}></sBox>
+                    <RoundInput width={"300px"} height={"50px"} placeholder="이름"/>        
+                    <DropDownBtn width={"100px"} heigth={"50px"}>
+                        <select onChange={handleSelect} value={Selected}>
+                            {SexOptions.map((item) => (
+                                <option value={item} key={item}>
+                                    {item}
+                                </option>
+                            ))}
+                        </select>
+                    </DropDownBtn>
                 </RowContainer>
             </ColContainer>
         </SignupContainer>
@@ -78,4 +70,9 @@ const UserImg=styled.div`
     background-image: url('../imgs/home_bg.jpg');
     border: 1px solid #BECBFF;
     border-radius: 100px;
+`
+
+const DropBar=styled.div`
+    width: 100px;
+    height: 50px;
 `
