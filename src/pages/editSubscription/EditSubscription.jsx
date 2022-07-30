@@ -6,6 +6,8 @@ import SubScription from './Content/Subscription'
 import SideMenu from './SideMenu'
 import { connect } from 'react-redux'
 import Asset from './Content/Asset'
+import Family from './Content/Family'
+
 const EditSubscription = ({view}) => {
 
   return (
@@ -14,7 +16,9 @@ const EditSubscription = ({view}) => {
         <RightContainer>
             <ContentContainer>
                <Content>
-                 {view===0 ? <SubScription/> : <Asset/>}
+                 {view===0 ? <SubScription/> : 
+                 view===1? <Asset/>: <Family/>
+                 }
                </Content>
           </ContentContainer>
         </RightContainer>
