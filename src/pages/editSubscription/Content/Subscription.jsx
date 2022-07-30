@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { BlueRoundBtn } from '../../../components/commons/Buttons'
+import { BlueRoundBtn, RadioBtn } from '../../../components/commons/Buttons'
 import { ColContainer, RowContainer } from '../../../components/commons/Container'
 import { BlackText } from '../../../components/commons/Font'
 import Flex from '../../../components/commons/Flex'
@@ -40,7 +40,7 @@ const Subscription = ({view, nextView}) => {
         </RowContainer>
         <RadioBtns>
         {ranks.map((rank)=>(
-                    <Label>
+                    <label>
                         <RadioBtn
                             type="radio"
                             value={rank}
@@ -48,7 +48,7 @@ const Subscription = ({view, nextView}) => {
                             onChange={ClickSpecialRank}
                         ></RadioBtn>
                         {rank}
-                    </Label>
+                    </label>
                 ))}        
         </RadioBtns> 
         <RowContainer style={{gap:"10px"}} >
@@ -57,7 +57,7 @@ const Subscription = ({view, nextView}) => {
         </RowContainer>
         <RadioBtns>
         {ranks.map((rank)=>(
-                    <Label>
+                    <label>
                         <RadioBtn
                             type="radio"
                             value={rank}
@@ -65,14 +65,14 @@ const Subscription = ({view, nextView}) => {
                             onChange={ClickRank}
                         ></RadioBtn>
                         {rank}
-                    </Label>
+                    </label>
                 ))}        
         </RadioBtns>
        <Line/>
         <BlackText size="36px" weight="700">ㅣ 2년 내 당첨 이력</BlackText>
         <RadioBtns style={{marginBottom:"10px"}}>
         {ranks.map((rank)=>(
-                    <Label>
+                    <label>
                         <RadioBtn
                             type="radio"
                             value={rank}
@@ -80,7 +80,7 @@ const Subscription = ({view, nextView}) => {
                             onChange={ClickRankHistory}
                         ></RadioBtn>
                         {rank}
-                    </Label>
+                    </label>
                 ))}        
         </RadioBtns>
         <ColContainer style={{gap:"20px", margin:"30px 0"}}>
@@ -95,7 +95,7 @@ const Subscription = ({view, nextView}) => {
         <BlackText size="36px" weight="700">ㅣ 청약 통장 종류</BlackText>
         <RadioBtns>
         {banks.map((b)=>(
-                    <Label style={{marginBottom:"20px"}}>
+                    <label style={{marginBottom:"20px"}}>
                         <RadioBtn
                             type="radio"
                             value={b}
@@ -103,7 +103,7 @@ const Subscription = ({view, nextView}) => {
                             onChange={ClickBank}
                         ></RadioBtn>
                         {b}
-                    </Label>
+                    </label>
                 ))}        
         </RadioBtns>
         <RowContainer style={{gap:"10px",marginBottom:"50px"}}>
@@ -129,6 +129,7 @@ const mapStateToProps=({view})=>{
     nextView,
   }
 export default connect(mapStateToProps, mapDispatchToProps)(Subscription)
+
 const SubscriptionContainer=styled.div`
     padding-top: 50px;
 `
@@ -136,21 +137,6 @@ const RadioBtns=styled(RowContainer)`
     margin: 50px 0 100px 10%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-`
-const RadioBtn=styled.input`
-    appearance: none;
-    width:20px;
-    height:20px;
-    border: 2px solid #000000;
-    vertical-align: middle;
-    border-radius: 100%; 
-    margin-right: 10px;
-    margin-bottom: 5px;
-    :checked{
-        background-color: #000000;
-    }
-`
-const Label=styled.label`
 `
 const BtnContainer=styled(Flex)`
     justify-content: flex-end;

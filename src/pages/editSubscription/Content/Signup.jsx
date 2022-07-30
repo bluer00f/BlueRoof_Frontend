@@ -181,7 +181,7 @@ export const RoundBox=styled.div`
     font-color: black;
     font-weight: 500;
     line-height: ${({height})=> height ? height : "70px"};
-    }
+    
 `
 const RadioBtns=styled(RowContainer)`
     height: 50px;

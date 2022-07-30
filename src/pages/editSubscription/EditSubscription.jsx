@@ -5,8 +5,8 @@ import { BlackText } from '../../components/commons/Font'
 import SubScription from './Content/Subscription'
 import SideMenu from './SideMenu'
 import { connect } from 'react-redux'
-import { nextView, prevView } from '../../redux'
-const EditSubscription = ({view,nextView }) => {
+import Asset from './Content/Asset'
+const EditSubscription = ({view}) => {
 
   return (
     <EditSubscriptionContainer>
@@ -14,7 +14,7 @@ const EditSubscription = ({view,nextView }) => {
         <RightContainer>
             <ContentContainer>
                <Content>
-                 {view===0 ? <SubScription/> : <div>hi</div>}
+                 {view===0 ? <SubScription/> : <Asset/>}
                </Content>
           </ContentContainer>
         </RightContainer>
@@ -27,11 +27,9 @@ const mapStateToProps=({view})=>{
     view: view.view
   }
 }
-const mapDispatchToProps={
-  nextView,
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditSubscription)
+export default connect(mapStateToProps, )(EditSubscription)
+
 
 const EditSubscriptionContainer=styled(RowContainer)`
     height: auto;
