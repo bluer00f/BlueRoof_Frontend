@@ -5,7 +5,7 @@ import EditSubscription from './pages/editSubscription/EditSubscription';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import DropdownEX from './pages/editSubscription/Content/DropdownEX';
-
+import About from './pages/About/About';
 const Router = () => {
   return (
     
@@ -16,6 +16,7 @@ const Router = () => {
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
           <Route path='/dropdown' element={<DropdownEX/>}></Route>
+          <Route path='/about' element={<About/>}></Route>
     </Routes>
             
        
