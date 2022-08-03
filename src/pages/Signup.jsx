@@ -178,7 +178,7 @@ export const RoundBox=styled.div`
     padding-left: 3%;
     border: 1px solid #BECBFF;
     border-radius: 40px;
-    font-color: black;
+    color: black;
     font-weight: 500;
     line-height: ${({height})=> height ? height : "70px"};
     

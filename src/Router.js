@@ -2,8 +2,8 @@ import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import EditSubscription from './pages/editSubscription/EditSubscription';
-import Login from "./pages/editSubscription/Content/Login";
-import Signup from './pages/editSubscription/Content/Signup';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import DropdownEX from './pages/editSubscription/Content/DropdownEX';
 
 const Router = () => {
