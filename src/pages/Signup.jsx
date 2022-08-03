@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import Flex from '../../../components/commons/Flex'
-import { ColContainer, OverContainer, RowContainer } from "../../../components/commons/Container";
-import { RoundInput } from "../../../components/commons/Inputs";
-import { DropDownBtn } from "../../../components/commons/Dropdown";
-import '../../../App.css';
-import { BlueRoundBtn, BorderWhiteBtn } from "../../../components/commons/Buttons";
+import Flex from '../components/commons/Flex'
+import { ColContainer, OverContainer, RowContainer } from "../components/commons/Container";
+import { RoundInput } from "../components/commons/Inputs";
+import { DropDownBtn } from "../components/commons/Dropdown";
+import '../App.css';
+import { BlueRoundBtn, BorderWhiteBtn } from "../components/commons/Buttons";
 
 const Signup = () => {
     const SexOptions = ["성별", "남", "여"];
