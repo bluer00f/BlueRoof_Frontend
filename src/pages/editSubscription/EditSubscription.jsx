@@ -4,15 +4,21 @@ import { RowContainer,ColContainer } from '../../components/commons/Container'
 import { BlackText } from '../../components/commons/Font'
 import SubScription from './Content/Subscription'
 import SideMenu from './SideMenu'
+import { connect } from 'react-redux'
+import Asset from './Content/Asset'
+import Family from './Content/Family'
 
-const EditSubscription = () => {
+const EditSubscription = ({view}) => {
+
   return (
     <EditSubscriptionContainer>
         <SideMenu/>
         <RightContainer>
             <ContentContainer>
                <Content>
-                   <SubScription/> 
+                 {view===0 ? <SubScription/> : 
+                 view===1? <Asset/>: <Family/>
+                 }
                </Content>
           </ContentContainer>
         </RightContainer>
@@ -20,8 +26,15 @@ const EditSubscription = () => {
     </EditSubscriptionContainer>
   )
 }
+const mapStateToProps=({view})=>{
+  return{
+    view: view.view
+  }
+}
 
-export default EditSubscription
+export default connect(mapStateToProps, )(EditSubscription)
+
+
 const EditSubscriptionContainer=styled(RowContainer)`
     height: auto;
 `

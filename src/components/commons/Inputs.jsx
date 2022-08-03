@@ -11,3 +11,13 @@ export const RoundInput=styled.input`
         font-weight: 500;
     }
 `
+export const DateInput=styled(RoundInput)`
+    ::before{
+        content: ${props=> props.placeholder};
+    };
+
+    :focus::before, 
+    :valid::before{
+        display: none;
+    }
+`
