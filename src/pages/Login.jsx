@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from "styled-components"
-import { ColContainer, RowContainer } from '../../../components/commons/Container'
-import { BlueRoundBtn} from '../../../components/commons/Buttons'
+import { ColContainer, RowContainer } from '../components/commons/Container'
+import { BlueRoundBtn} from '../components/commons/Buttons'
 import { useState } from 'react'
-import { RoundInput } from '../../../components/commons/Inputs'
-import Flex from '../../../components/commons/Flex'
-import { BlueText } from '../../../components/commons/Font'
+import { RoundInput } from '../components/commons/Inputs'
+import Flex from '../components/commons/Flex'
+import { BlueText } from '../components/commons/Font'
 
 const Login = () => {
     const [inputId, setInputId] = useState('')

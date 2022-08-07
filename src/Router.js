@@ -1,11 +1,11 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import EditSubscription from './pages/editSubscription/EditSubscription';
-import Login from "./pages/editSubscription/Content/Login";
-import Signup from './pages/editSubscription/Content/Signup';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import DropdownEX from './pages/editSubscription/Content/DropdownEX';
-
+import About from './pages/About/About';
 const Router = () => {
   return (
     
@@ -16,6 +16,7 @@ const Router = () => {
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
           <Route path='/dropdown' element={<DropdownEX/>}></Route>
+          <Route path='/about' element={<About/>}></Route>
     </Routes>
             
        
