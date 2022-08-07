@@ -61,6 +61,7 @@ const Signup = () => {
             <Content>
                 <ColContainer style={{width:"80%", margin:"0 auto", marginTop:"15px", gap:"15px"}}>
                     <RowContainer style={{gap:"15px"}}>
+                        <input type='file'/>
                         <UserImg />
                         <ColContainer style={{gap:"15px"}}>
                             <RowContainer style={{gap:"15px"}}>
@@ -131,7 +132,7 @@ const Signup = () => {
                                         <RadioBtn
                                             type="radio"
                                             value={h}
-                                            checked={houseHolder===h}
+                                            checked={soldier===h}
                                             onChange={onClickSoldier}
                                         ></RadioBtn>
                                         {h}
