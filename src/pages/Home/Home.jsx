@@ -5,7 +5,8 @@ import { RowContainer, ColContainer } from '../../components/commons/Container'
 import { BlackText } from '../../components/commons/Font'
 import Landing1 from './Landing1'
 import Landing2 from './Landing2'
-
+import Landing3 from './Landing3'
+import Landing4 from './Landing4'
 const Home = () => {
   const SectionStyle={
     height: '100vh',
@@ -16,6 +17,8 @@ const Home = () => {
   }
   
   return (
+    <div style={{backgroundColor: "#F9FBFF"}}>
+
     <FullPage>
       <FullpageNavigation/>
       <FullPageSections>
@@ -26,10 +29,15 @@ const Home = () => {
           <Landing2/>
         </FullpageSection>
         <FullpageSection style={SectionStyle}>
-          <h1>hi 3</h1>
+           <Landing3/>
+        </FullpageSection>
+        <FullpageSection style={SectionStyle}>
+           <Landing4/>
         </FullpageSection>
       </FullPageSections>
     </FullPage>
+    </div>
+    
   )
 }
 
