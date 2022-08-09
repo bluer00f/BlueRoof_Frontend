@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styled from "styled-components";
 import Flex from '../components/commons/Flex'
 import { ColContainer, OverContainer, RowContainer } from "../components/commons/Container";
@@ -7,8 +7,29 @@ import { RoundInput } from "../components/commons/Inputs";
 import { DropDownBtn } from "../components/commons/Dropdown";
 import '../App.css';
 import { BlueRoundBtn, BorderWhiteBtn } from "../components/commons/Buttons";
+import Avatar from "react-avatar"; //npm install react-avatar --save
+
 
 const Signup = () => {
+    const [Image, setImage] = useState("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png");
+    const fileInput = useRef(null);
+    const onClickProfile = (e) => {
+        if (e.target.files[0]){
+            setImage(e.target.files[0])
+        }
+        else {
+            setImage("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png")
+            return
+        }
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setImage(reader.result)
+            }
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    }
+
     const SexOptions = ["성별", "남", "여"];
     const [Selected, setSelected] = useState("");
     
@@ -61,8 +82,13 @@ const Signup = () => {
             <Content>
                 <ColContainer style={{width:"80%", margin:"0 auto", marginTop:"15px", gap:"15px"}}>
                     <RowContainer style={{gap:"15px"}}>
-                        <input type='file'/>
-                        <UserImg />
+                        <input type="file" style={{display: "none"}}
+                                accept="image/jpg, image/png, image/jpeg"
+                                name="prifileImg"
+                                onChange={onClickProfile}
+                                ref={fileInput}/>
+                        <Avatar src={Image} style={{magin: "20px"}} size={110} round={"100%"}
+                                onClick={() => {fileInput.current.click()}} />
                         <ColContainer style={{gap:"15px"}}>
                             <RowContainer style={{gap:"15px"}}>
                                 <RoundInput width={"300px"} height={"50px"} placeholder="이름"/>        
