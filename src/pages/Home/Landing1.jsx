@@ -2,16 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { RowContainer, ColContainer } from '../../components/commons/Container'
 const Landing1 = () => {
-  function clickEX() { //홈에서 헤더 클릭 안먹어서 여기 연결했는데 나중에 풀어 놓을게
-    window.location.href = "/login"
-  }
   return (
     <Landing1Container>
         <Left>
         <div style={{fontSize:"52px", marginBottom:"30px"}}>welcome to <br/> BlueRoof!</div>
         <div style={{fontSize:"14px", color:"#616771", lineHeight:"28px"}}>당신의 청약 점수를 알고싶으신가요?<br/>BlueRoof를 이용하세요!</div>
         <Btns>
-            <Btn onClick={clickEX}>정보 입력없는<br/>간편검사하기</Btn>
+            <Btn>정보 입력없는<br/>간편검사하기</Btn>
             <Btn>정보 입력하고<br/>상세검사하기</Btn>
         </Btns>
         </Left>
