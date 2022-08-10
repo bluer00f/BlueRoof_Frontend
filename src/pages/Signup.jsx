@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Flex from '../components/commons/Flex'
 import { ColContainer, OverContainer, RowContainer } from "../components/commons/Container";
 import { RoundInput } from "../components/commons/Inputs";
-import { DropDownBtn } from "../components/commons/Dropdown";
+import { Dropdown } from 'react-bootstrap'
 import '../App.css';
 import { BlueRoundBtn, BorderWhiteBtn } from "../components/commons/Buttons";
 import Avatar from "react-avatar"; //npm install react-avatar --save
@@ -30,7 +30,7 @@ const Signup = () => {
         reader.readAsDataURL(e.target.files[0]);
     }
 
-    const SexOptions = ["성별", "남", "여"];
+    const SexDropDown = ["남", "여"];
     const [Selected, setSelected] = useState("");
     
     const handleSelect = (e) => {
@@ -91,14 +91,23 @@ const Signup = () => {
                                 onClick={() => {fileInput.current.click()}} />
                         <ColContainer style={{gap:"15px"}}>
                             <RowContainer style={{gap:"15px"}}>
-                                <RoundInput width={"300px"} height={"50px"} placeholder="이름"/>        
-                                <select onChange={handleSelect} value={Selected}>
-                                    {SexOptions.map((item) => (
-                                        <option value={item} key={item}>
-                                            {item}
-                                        </option>
-                                    ))}
-                                </select>
+                                <RoundInput width={"300px"} height={"50px"} placeholder="이름"/>
+
+                                <Dropdown>
+                                    <Dropdown.Toggle
+                                        variant="success" id="dropdown-basic"
+                                        style={{border: "1px solid #BECBFF",backgroundColor:"white",color:"black",borderRadius:"40px", width:"100px", height:"50px"}}>
+                                        성별
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                        {SexDropDown.map((option)=>(
+                                            <Dropdown.Item key={option.id}>{option}</Dropdown.Item>
+                                        ))}
+                                    </Dropdown.Menu>
+                                        
+                                </Dropdown>
+                                
+
                             </RowContainer>
                             <RowContainer>
                                 <RoundInput width={"420px"} height={"50px"} placeholder="생년월일"/>
@@ -136,7 +145,7 @@ const Signup = () => {
                         <div style={{borderLeft:"1px solid #BECBFF", height:"50px", position:"absolute", marginTop:"-50px", marginLeft:"115px"}}/>
                         <RadioBtns>     
                             {houseHolders.map((h)=>(
-                                <Label style={{marginBottom:"20px"}}>
+                                <Label style={{marginBottom:"20px"}} key={h.id}>
                                     <RadioBtn
                                         type="radio"
                                         value={h}
@@ -154,7 +163,7 @@ const Signup = () => {
                             <div style={{borderLeft:"1px solid #BECBFF", height:"50px", position:"absolute", marginTop:"-50px", marginLeft:"115px"}}/>
                             <RadioBtns style={{marginLeft:"150px"}}>     
                                 {houseHolders.map((h)=>(
-                                    <Label style={{marginBottom:"20px"}}>
+                                    <Label style={{marginBottom:"20px"}}key={h.id}>
                                         <RadioBtn
                                             type="radio"
                                             value={h}
