@@ -1,8 +1,8 @@
 import React from "react";
 import styled from 'styled-components'
-import { ColContainer, RowContainer } from "../../../components/commons/Container";
-import { BlackText, GrayText } from "../../../components/commons/Font";
-import Flex from "../../../components/commons/Flex";
+import { ColContainer, RowContainer } from "../components/commons/Container";
+import { BlackText, GrayText } from "../components/commons/Font";
+import Flex from "../components/commons/Flex";
 
 const Chatbot = () => {
 
