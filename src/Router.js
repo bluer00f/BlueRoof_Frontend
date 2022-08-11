@@ -5,7 +5,8 @@ import EditSubscription from './pages/editSubscription/EditSubscription';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import About from './pages/About/About';
-import Chatbot from './pages/editSubscription/Content/Chatbot'
+import Chatbot from './pages/Chatbot'
+import Check from './pages/Check/Check';
 const Router = () => {
   return (
     
@@ -17,6 +18,7 @@ const Router = () => {
           <Route path='/signup' element={<Signup/>}></Route>
           <Route path='/about' element={<About/>}></Route>
           <Route path='/chatbot' element={<Chatbot/>}></Route>
+          <Route path='/check' element={<Check/>}></Route>
     </Routes>
             
        
