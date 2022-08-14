@@ -5,7 +5,7 @@ import EditSubscription from './pages/editSubscription/EditSubscription';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import About from './pages/About/About';
-import Chatbot from './pages/Chatbot'
+import Chatbot from './pages/Chatbot/Chatbot';
 import Check from './pages/Check/Check';
 const Router = () => {
   return (

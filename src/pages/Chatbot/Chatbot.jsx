@@ -1,10 +1,18 @@
 import React from "react";
 import styled from 'styled-components'
-import { ColContainer, RowContainer } from "../components/commons/Container";
-import { BlackText, GrayText } from "../components/commons/Font";
-import Flex from "../components/commons/Flex";
+import { ColContainer, RowContainer } from "../../components/commons/Container";
+import { BlackText, GrayText } from "../../components/commons/Font";
+import Flex from "../../components/commons/Flex";
+import { RoundInput } from "../../components/commons/Inputs";
+import { BorderWhiteBtn } from "../../components/commons/Buttons";
+import { useState } from "react";
 
 const Chatbot = () => {
+    const [inputText, setInputText] = useState("");
+
+    const handleInputText = (e) => {
+        setInputText(e.target.value)
+    }
 
     return (
         <RowContainer style={{justifyContent: "center"}}>
@@ -30,7 +38,14 @@ const Chatbot = () => {
                     </QnASection>                
                 </ColContainer>
                 <Chatting>
+                    <Message>
 
+                    </Message>
+                    <UserInput>
+                        <RoundInput value={inputText} onChange={handleInputText} width={"500px"} height={"50px"} style={{padding: "0 100px 0 30px"}} placeholder="입력하세요." />
+                        <div style={{border:"1px solid #BECBFF", height:"50px", position:"absolute", marginLeft:"330px"}}/>
+                        <BorderWhiteBtn onClick="#" style={{width:"100px", height:"50px", position:"absolute", marginLeft:"350px", padding:"0", border:"transparent", textAlign:"right"}}>보내기</BorderWhiteBtn>
+                    </UserInput>
                 </Chatting>
             </ChatbotContainer>
         </RowContainer>        
@@ -59,4 +74,16 @@ const Chatting=styled.div`
     border-radius: 7%;
     margin-left: 30px;
     margin-bottom: 20px;
+    padding: 20px;
+`
+const Message=styled.div`
+    width: 100%;
+    height: 85%;
+`
+const UserInput=styled(Flex)`
+    width: 100%;
+    height: 15%;
+	flex-direction: row;
+    justify-content: center;
+    margin-top:15px;
 `

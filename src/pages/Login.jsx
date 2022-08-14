@@ -26,8 +26,8 @@ const Login = () => {
     return (
         <LoginContainer>
             <ColContainer style={{gap:"10px", margin:"30px 0"}}>
-                <RoundInput value={inputId} _onChange={handleInputId} width={"400px"} height={"50px"} placeholder="아이디"/>
-                <RoundInput value={inputPw} _onChange={handleInputPw} width={"400px"} height={"50px"} placeholder="비밀번호"/>
+                <RoundInput value={inputId} onChange={handleInputId} width={"400px"} height={"50px"} placeholder="아이디"/>
+                <RoundInput value={inputPw} onChange={handleInputPw} width={"400px"} height={"50px"} placeholder="비밀번호"/>
             </ColContainer>
             <BtnContainer style={{gap:"20px"}}>
                 <BlueRoundBtn onClick={onClickLogin} style={{width:"360px", height:"30px"}}>로그인</BlueRoundBtn>
