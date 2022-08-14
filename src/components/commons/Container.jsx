@@ -15,3 +15,9 @@ export const ColContainer = styled(Flex)`
 	flex-direction: column;
 	align-items: center;
 `;
+export const GridContainer = styled(Flex)`
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	place-items: center;
+	grid-gap: 10px;
+`;
