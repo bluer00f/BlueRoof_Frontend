@@ -67,7 +67,7 @@ const Box=styled.div`
     width: 100%;
     height: 90%;
     overflow-y: scroll;
-    margin-top: 30px;
+    margin-top: 20px;
 `
 const RoundBox=styled.button`
     width: 95%;
