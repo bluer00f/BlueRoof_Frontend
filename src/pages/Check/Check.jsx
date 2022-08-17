@@ -5,6 +5,7 @@ import Check1 from './Content/Check1'
 import Check2 from './Content/Check2'
 import Check3 from './Content/Check3'
 import Check4 from './Content/Check4'
+import Result from './Content/Result'
 
 const Check = () => {
     const [index, setIndex]=useState(0);
@@ -23,7 +24,9 @@ const Check = () => {
                         ? <Check2/>
                         : index===2
                         ? <Check3/>
-                        : <Check4/>
+                        : index===3
+                        ? <Check4/>
+                        : <Result/>
                     }
                     
                 </CheckContainer>
