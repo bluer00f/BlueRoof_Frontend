@@ -48,10 +48,10 @@ const result =() => {
                   </AreaBox>
                 </ImgBox>
                 <ColContainer width={"55%"} height={"100%"} style={{marginLeft: "30px"}}>
-                    <BlackText size={"20px"} style={{width: "100%", marginTop: "10px"}}>
+                    <BlackText size={"20px"} style={{fontWeight: "bold", width: "100%", marginTop: "10px"}}>
                         | 청약 자격 진단 결과
                     </BlackText>
-                    <RoundBox width="100%" height="45px" style={{fontWeight: "bold", marginTop: "20px", paddingLeft: "30px"}}>
+                    <RoundBox width="100%" height="45px" style={{marginTop: "20px", paddingLeft: "30px"}}>
                         {qualifys[0]}
                     </RoundBox>
                     <a href="/signup" style={{width: "100%", textAlign: "right", fontSize:"15px", fontWeight:"bold", color:"#0028FF", margin:" 10px 20px 0 0"}}>
