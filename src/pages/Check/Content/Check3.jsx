@@ -106,6 +106,7 @@ const CityBox=styled.div`
     z-index: 2;
     margin-bottom: 48px;
     margin-left: 10px;
+    box-shadow: 1px 1px #D8D8D890;
     &.checked {
       background-color: #00000000;
       color: white;

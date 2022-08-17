@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import styled from 'styled-components'
 import { BlackText } from '../../../components/commons/Font'
 import { ColContainer, RowContainer } from '../../../components/commons/Container'
-import Check3 from './Check3'
 
 const Check4 = () => {
   //임시 데이터 -> 나중에 api로 받아와야함
@@ -30,12 +29,12 @@ const Check4 = () => {
       <RowContainer width={"100%"} height={"90%"} style={{marginTop:"20px"}}>
         <ImgBox>
           <CityBox className={"checked"}>
-            서울
+            {citys[0]}
           </CityBox>
           <AlertBox>
-            {alert1[0] != "" ? alert1[0] : ""}
-            {alert1[0] != "" ? <br/> : ""}
-            {alert2[0] != "" ? alert2[0] : ""}
+            {alert1[0] !== "" ? alert1[0] : ""}
+            {alert1[0] !== "" ? <br/> : ""}
+            {alert2[0] !== "" ? alert2[0] : ""}
           </AlertBox>
         </ImgBox>
         <ColContainer width={"55%"} height={"100%"}>
@@ -72,25 +71,28 @@ const ImgBox=styled.div`
     height: 100%;
     background-image: url("https://cdn.pixabay.com/photo/2022/07/29/18/11/city-7352352_1280.jpg");
     background-size: cover;
+    border-radius: 10px;
+    box-shadow: 3px 3px #D8D8D890;
 `
 const CityBox=styled.div`
-width: 50px;
-height: 50px;
-border-radius: 100%;
-background-color: white;
-color: gray;
-font-size: 16px;
-text-align: center;
-line-height: 50px;
-position: absolute;
-z-index: 2;
-margin-top: 15px;
-margin-left: 15px;
-&.checked {
-  background-color: #00000000;
-  color: white;
-  border: 1px solid white;
-}
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: white;
+  color: gray;
+  font-size: 16px;
+  text-align: center;
+  line-height: 50px;
+  position: absolute;
+  z-index: 2;
+  margin-top: 15px;
+  margin-left: 15px;
+  box-shadow: 1px 1px #D8D8D890;
+  &.checked {
+    background-color: #00000000;
+    color: white;
+    border: 1px solid white;
+  }
 `
 const AlertBox=styled.div`
     width: 100%;
