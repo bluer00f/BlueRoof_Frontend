@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { BlueRoundBtn, RadioBtn } from '../../../components/commons/Buttons'
-import { ColContainer, RowContainer } from '../../../components/commons/Container'
+import { ColContainer, RowContainer, InputContainer } from '../../../components/commons/Container'
 import { BlackText } from '../../../components/commons/Font'
 import Flex from '../../../components/commons/Flex'
 import { RoundInput } from '../../../components/commons/Inputs'
@@ -84,8 +84,15 @@ const Subscription = ({view, nextView}) => {
                 ))}        
         </RadioBtns>
         <ColContainer style={{gap:"20px", margin:"30px 0"}}>
-            <RoundInput width={"80%"} height={"50px"} placeholder="당첨일자"/>
-            <RoundInput width={"80%"} height={"50px"} placeholder="당첨지역"/>
+            <InputContainer>
+                <BlackText>당첨 일자</BlackText>
+                <RoundInput width={"80%"} height={"50px"}/>
+            </InputContainer>
+            <InputContainer>
+            <BlackText>당첨 지역</BlackText>
+            <RoundInput width={"80%"} height={"50px"}/> 
+            </InputContainer>
+           
             <RowContainer style={{gap:"10px", width: "80%"}}>
                 <RoundInput width={"20%"} height={"50px"} placeholder="우편번호"></RoundInput>
                 <RoundInput width={"80%"} height={"50px"} placeholder="당첨아파트명"/>
@@ -111,7 +118,11 @@ const Subscription = ({view, nextView}) => {
             <a href="https://www.naver.com" style={{fontSize:"14px"}}>가입일 확인 바로가기</a>
         </RowContainer>
         <ColContainer style={{marginBottom:"50px"}}>
-            <RoundInput width={"80%"} height={"50px"} placeholder="가입일자"/>
+            <InputContainer>
+            <BlackText>가입일자</BlackText>
+            <RoundInput width={"80%"} height={"50px"}/> 
+            </InputContainer>
+           
         </ColContainer>
         <BtnContainer>
             <BlueRoundBtn onClick={ClickNext}>다음 &gt;</BlueRoundBtn>
