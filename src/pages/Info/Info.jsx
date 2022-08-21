@@ -4,7 +4,7 @@ import UserInfo from "./Content/UserInfo";
 import Modify from "./Content/Modify";
 
 const Info = () => {
-    const [index, setIndex]=useState(1);
+    const [index, setIndex]=useState(0);
 
     return (
         <InfoContainer>
