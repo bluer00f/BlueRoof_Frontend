@@ -193,7 +193,7 @@ const SignupContainer=styled.div`
     padding: 50px;
 `
 
-const Content=styled.div`
+export const Content=styled.div`
     width: 80%;
     border: 1px solid #D3D3D3;
     border-radius: 25px;
@@ -227,7 +227,7 @@ const RadioBtns=styled(RowContainer)`
     grid-template-columns: 1fr 1fr;
     line-height: 50px;
 `
-const RadioBtn=styled.input`
+export const RadioBtn=styled.input`
     appearance: none;
     width:15px;
     height:15px;

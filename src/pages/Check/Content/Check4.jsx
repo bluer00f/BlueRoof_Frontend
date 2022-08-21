@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { BlackText } from '../../../components/commons/Font'
 import { ColContainer, RowContainer } from '../../../components/commons/Container'
 
+
 const Check4 = () => {
   //임시 데이터 -> 나중에 api로 받아와야함
     const checks=["서울은평뉴타운 디에트르더퍼스트", "힐스테이트 관악뉴포레", "보라매한국 아델리움앤클래스", "용인흥덕2", "서광교파크뷰", "의왕고천A-2블록 행복주택", "abcedf"]
@@ -11,6 +12,7 @@ const Check4 = () => {
     const alert1=["• 투기 과열 지구","• 투기 과열 지구","","","• 투기 과열 지구","• 투기 과열 지구"]
     const alert2=["• 청약 과열 지구","", "", "• 청약 과열 지구", "• 청약 과열 지구", "", "• 청약 과열 지구"]
     const areas=["069.9932", "084.9692A", "084.9692B", "084.9513C", "084.9443D"]
+    const [area, setArea] = useState(areas[0]);
     const [isCheck, setIsCheck]=useState([false, false, false, false, false]);
     const clickArea=(i)=>{
         //해당인덱스 값에 클래스네임 지정
@@ -22,6 +24,9 @@ const Check4 = () => {
         setIsCheck([...isCheck]);
         console.log(isCheck)
     }   
+    const ClickArea=(e)=>{
+      setArea(e.target.value);
+    }
     
   return (
     <CheckContainer>
@@ -45,13 +50,17 @@ const Check4 = () => {
           </InfoBox>
           <ColContainer style={{justifyContent:"space-between", width: "100%", height:"70%", marginLeft: "50px"}}>
             {areas.map((check, i)=>(
-                <Button 
-                onClick={()=>clickArea(i)}
-                value={i}
-                className={isCheck[i] ? "checked" : ""}
-                >
-                {"○ " + check}
-                </Button>
+              <label style={{width:"100%", marginLeft:"30px"}}>
+                <RadioBtn
+                  type="radio"
+                  value={check}
+                  onChange={ClickArea}
+                  checked={area===check}
+                  className={isCheck[i] ? "checked" : ""}
+                  style={{border:"1px solid black"}}
+                />
+                {check}
+              </label>
             ))}
           </ColContainer>
         </ColContainer>
@@ -110,14 +119,18 @@ const InfoBox=styled.div`
     color: black;
     margin: 0 0 30px 50px;
 `
-const Button=styled.button`
-    width: 100%;
-    font-size: 17px;
-    margin-left: 25px;
-    background-color: #00000000;
-    border: none;
-    text-align: left;
-    &.checked {
-      color: #0028FF;
+const RadioBtn=styled.input`
+    appearance: none;
+    width:15px;
+    height:15px;
+    border: 2px solid #000000;
+    vertical-align: middle;
+    align-items: left;
+    justify-content: left;
+    border-radius: 100%; 
+    margin-right: 10px;
+    margin-bottom: 5px;
+    :checked{
+        background-color: #000000;
     }
 `
