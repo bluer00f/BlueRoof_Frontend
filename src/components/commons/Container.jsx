@@ -21,3 +21,7 @@ export const GridContainer = styled(Flex)`
 	place-items: center;
 	grid-gap: 10px;
 `;
+export const InputContainer=styled(RowContainer)`
+	width: 80%;
+	gap: 5%;
+`
