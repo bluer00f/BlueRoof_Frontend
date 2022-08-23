@@ -15,7 +15,9 @@ const Chatbot = () => {
     }
 
     return (
-        <RowContainer style={{justifyContent: "center"}}>
+        <RowContainer style={{justifyContent: "center",
+        alignItems: "center",
+        padding: "50px"}}>
             <ChatbotContainer>
                 <ColContainer>
                     <TopSection>
@@ -27,12 +29,12 @@ const Chatbot = () => {
                         <GrayText weight={"200"} size={"16px"} style={{marginBottom: "10px"}}>| 자주 묻는 질문</GrayText>
                         <RowContainer>
                             <ColContainer>
-                                    <div style={{width: "200px", height: "100px", border: "1px solid black", margin: "5px"}}></div>
-                                    <div style={{width: "200px", height: "100px", border: "1px solid black", margin: "5px"}}></div> 
+                                    <div style={{width: "200px", height: "100px", border: "none", margin: "5px"}}></div>
+                                    <div style={{width: "200px", height: "100px", border: "none", margin: "5px"}}></div> 
                             </ColContainer>
                             <ColContainer>
-                                    <div style={{width: "200px", height: "100px", border: "1px solid black", margin: " 30px 5px 5px"}}></div>
-                                    <div style={{width: "200px", height: "100px", border: "1px solid black", margin: "5px"}}></div>       
+                                    <div style={{width: "200px", height: "100px", border: "none", margin: " 30px 5px 5px"}}></div>
+                                    <div style={{width: "200px", height: "100px", border: "none", margin: "5px"}}></div>       
                             </ColContainer>                               
                         </RowContainer>               
                     </QnASection>                

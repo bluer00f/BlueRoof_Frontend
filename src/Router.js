@@ -5,8 +5,10 @@ import EditSubscription from './pages/editSubscription/EditSubscription';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import About from './pages/About/About';
-import Chatbot from './pages/Chatbot/Chatbot';
 import Check from './pages/Check/Check';
+import Chatbot from './pages/Chatbot/Chatbot';
+import History from './pages/Check/History';
+import Info from './pages/Info/Info';
 const Router = () => {
   return (
     
@@ -19,6 +21,8 @@ const Router = () => {
           <Route path='/about' element={<About/>}></Route>
           <Route path='/chatbot' element={<Chatbot/>}></Route>
           <Route path='/check' element={<Check/>}></Route>
+          <Route path='/history' element={<History/>}></Route>
+          <Route path='/info' element={<Info/>}></Route>
     </Routes>
             
        

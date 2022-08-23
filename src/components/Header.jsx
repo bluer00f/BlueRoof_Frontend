@@ -22,7 +22,7 @@ const Header = () => {
     </Nav>
     <Nav>
       <Nav.Link eventKey={2} href="/login">
-        로그인
+        로그아웃
       </Nav.Link>
     </Nav>
   </Navbar.Collapse>
