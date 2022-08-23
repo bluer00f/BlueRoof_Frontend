@@ -10,7 +10,7 @@ const History = () => {
     const types=["APT", "APT", "APT", "APT", "APT", "APT", "APT"]
     const areas=["069.9932", "084.9692A", "084.9692B", "084.9513C", "084.9443D"]
     const qualifys=["적격", "부적격", "부적격"]
-    const scores=["3", "15", "8"]
+    const scores=["8", "15", "3"]
 
     return (
         <HistoryContainer style={{textAlign:"left"}}>

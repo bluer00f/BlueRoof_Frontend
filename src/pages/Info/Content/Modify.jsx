@@ -97,7 +97,7 @@ const Check = () => {
                 </ColContainer>
             </RowContainer>
             <div position="relative">
-                <RoundInput width={"535px"} height={"50px"} placeholder="아이디"/>
+                <RoundInput style={{border:"none"}} width={"535px"} height={"50px"} placeholder="아이디"/>
             </div>
             <div>
                 <RoundInput width={"535px"} height={"50px"} placeholder="비밀번호"/>
@@ -110,7 +110,7 @@ const Check = () => {
                 <BorderWhiteBtn onClick={onClickEmailCheck} style={{width:"100px", height:"50px", position:"absolute", marginLeft:"-115px", padding:"0", border:"transparent", textAlign:"right"}}>중복확인</BorderWhiteBtn>
             </div>
             <div position="relative">
-                <RoundInput width={"535px"} height={"50px"} placeholder="전화번호"/>
+                <RoundInput style={{border:"none"}} width={"535px"} height={"50px"} placeholder="전화번호"/>
             </div>
             <RowContainer style={{gap:"15px"}}>
                 <RoundInput width={"100px"} height={"50px"} placeholder="우편번호" />
@@ -160,9 +160,9 @@ const Check = () => {
             <Box width={"535px"} style={{marginTop:"15px"}}>
                 <Box width={"30%"}/>
                 <BtnContainer width={"40%"}>
-                    <BlueRoundBtn onClick={onClickModify} style={{width:"100px", height:"30px"}}>수정하기</BlueRoundBtn>
+                    <BlueRoundBtn onClick={onClickModify} style={{width:"100px", height:"30px"}}>저장하기</BlueRoundBtn>
                 </BtnContainer>
-                    <p onClick={"#"} style={{textDecorationLine:"underline", width:"30%", textAlign: "right", fontSize:"15px", fontWeight:"bold", color:"red", paddingRight:"10px"}}>저장하기</p>
+                    <p onClick={"#"} style={{textDecorationLine:"underline", width:"30%", textAlign: "right", fontSize:"15px", fontWeight:"bold", color:"red", paddingRight:"10px"}}>회원탈퇴</p>
             </Box>
         </ColContainer>
     )
