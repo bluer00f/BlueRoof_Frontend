@@ -6,13 +6,15 @@ import { RadioBtn } from '../../../components/commons/Buttons'
 import { RoundInput } from '../../../components/commons/Inputs'
 import { BlueRoundBtn } from '../../../components/commons/Buttons'
 import Flex from '../../../components/commons/Flex'
-
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table'
+import Table from '../Component/Table'
 const Family = () => {
     const whether=["예", "아니오"];
     const [isMarried, setIsMarried]=useState("예");
     const [isHead, setIsHead]=useState("예");
     const [isForeign , setIsForeign]=useState("예");
     const [isWon, setIsWon]=useState("예");
+    
 
     const ClickMarried=(e)=>{
         setIsMarried(e.target.value);
@@ -27,6 +29,9 @@ const Family = () => {
         setIsWon(e.target.value);
     }
 
+    const cellEditProp = {
+        mode: 'click'
+      };
   return (
     <FamilyContainer>
         <BlackText size="36px" weight="700">ㅣ 혼인 여부</BlackText>
@@ -78,6 +83,20 @@ const Family = () => {
                     </label>
                 ))}
                 </RowContainer>
+                <RowContainer style={{width:"100%", gap:"10%"}}>
+                    <InputTitle>분리세대 여부</InputTitle>
+                    {whether.map((w)=>(
+                    <label>
+                        <RadioBtn
+                            type="radio"
+                            value={w}
+                            checked={isForeign===w}
+                            onChange={ClickForeign}
+                        ></RadioBtn>
+                        {w}
+                    </label>
+                    ))}
+                </RowContainer>
                 <RowContainer style={{width:"100%"}}>
                     <InputTitle>주민등록번호</InputTitle>
                     <Input style={{width:"23%"}}></Input>
@@ -110,6 +129,10 @@ const Family = () => {
                 </RowContainer>
             </Content>
         </ColContainer>
+        <Line/>
+     
+     <Table/>
+     
         <BtnContainer>
             <BlueRoundBtn>저장하기</BlueRoundBtn>
         </BtnContainer>
@@ -144,4 +167,10 @@ const BtnContainer=styled(Flex)`
     justify-content: flex-end;
     padding-bottom: 30px;
     margin-top: 50px;
+`
+const Line=styled.div`
+    width: 100%;
+    height:1px;
+    background-color: #B3B3B3;
+   margin: 100px 0;
 `

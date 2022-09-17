@@ -1,11 +1,11 @@
 //action의 type을 보고 핸들링
 import { NEXT_VIEW, PREV_VIEW, VIEW_OPTION } from "./types";
 
-const initianView={
+const initialView={
     view: 0
 }
 
-const viewReducer=(state=initianView, action)=>{
+const viewReducer=(state=initialView, action)=>{
     switch(action.type){
         case NEXT_VIEW:
             return{
@@ -22,3 +22,4 @@ const viewReducer=(state=initianView, action)=>{
     }
 }
 export default viewReducer
+
