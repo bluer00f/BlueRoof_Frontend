@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
+import ChatIcon from '../../components/ChatIcon'
 import { ColContainer, RowContainer } from '../../components/commons/Container'
 import Check1 from './Content/Check1'
 import Check2 from './Content/Check2'
 import Check3 from './Content/Check3'
 import Check4 from './Content/Check4'
+import Check5 from './Content/Check5'
 import Result from './Content/Result'
 
 const Check = () => {
@@ -26,6 +28,8 @@ const Check = () => {
                         ? <Check3/>
                         : index===3
                         ? <Check4/>
+                        : index===4
+                        ? <Check5/>
                         : <Result/>
                     }
                     
@@ -35,6 +39,7 @@ const Check = () => {
             ></img>
            
         </RowContainer>
+        <ChatIcon/>
         
     </ColContainer>
   )
