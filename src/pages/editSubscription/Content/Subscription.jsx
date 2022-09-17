@@ -68,7 +68,7 @@ const Subscription = ({view, nextView}) => {
                             type="radio"
                             value={rank}
                             checked={ranking===rank}
-                            onChange={ClickRank}
+                            onChange={ClickRadio}
                         ></RadioBtn>
                         {rank}
                     </label>
@@ -77,22 +77,22 @@ const Subscription = ({view, nextView}) => {
        <Line/>
         <BlackText size="36px" weight="700">ㅣ 2년 내 당첨 이력</BlackText>
         <RadioBtns style={{marginBottom:"10px"}}>
-        {ranks.map((rank)=>(
+        {radios.map((radio)=>(
                     <label>
                         <RadioBtn
                             type="radio"
-                            value={rank}
-                            checked={rankHistory===rank}
+                            value={radio}
+                            checked={radio===radio}
                             onChange={ClickRankHistory}
                         ></RadioBtn>
-                        {rank}
+                        {radio}
                     </label>
                 ))}        
         </RadioBtns>
         <ColContainer style={{gap:"20px", margin:"30px 0"}}>
             <InputContainer>
                 <BlackText>당첨 일자</BlackText>
-                <RoundInput width={"80%"} height={"50px"}/>
+                <RoundInput width={"80%"} height={"50px"} placeholder="YYYYMMDD"/>
             </InputContainer>
             <InputContainer>
             <BlackText>당첨 지역</BlackText>
