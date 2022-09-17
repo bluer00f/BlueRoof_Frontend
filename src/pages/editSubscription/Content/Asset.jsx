@@ -1,24 +1,27 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { ColContainer, RowContainer } from '../../../components/commons/Container'
+import { ColContainer, RowContainer, InputContainer } from '../../../components/commons/Container'
 import { BlackText } from '../../../components/commons/Font'
 import { RoundInput,DateInput } from '../../../components/commons/Inputs'
 import { RadioBtn } from '../../../components/commons/Buttons'
 import { Dropdown } from 'react-bootstrap'
-import { nextView, prevView } from '../../../redux'
+import { nextView, prevView, AddBuilding} from '../../../redux'
 import { BlueRoundBtn } from '../../../components/commons/Buttons'
 import Flex from '../../../components/commons/Flex'
 import { connect } from 'react-redux'
+import Building from '../Component/Building'
+import Land from '../Component/Land'
+import Car from '../Component/Car'
 
-const Asset = ({view, nextView}) => {
+const Asset = ({view, nextView, AddBuilding, building}) => {
   const options=["예", "아니오"];
   const buildingDropDown=["단독주택", "공동주택","오피스텔","공장","상가","부속토지"];
-  const [building, setBuilding]=useState("예");
+  const [Isbuilding, setIsBuilding]=useState("예");
   const [land,setLand]=useState("예");
   const [car, setCar]=useState("예");
-
+  
   const ClickBuilding=(e)=>{
-    setBuilding(e.target.value);
+    setIsBuilding(e.target.value);
   }
   const ClickLand=(e)=>{
     setLand(e.target.value);
@@ -26,10 +29,36 @@ const Asset = ({view, nextView}) => {
   const ClickCar=(e)=>{
     setCar(e.target.value);
   }
-
   const ClickNext=()=>{
     nextView();
-}
+  }
+ 
+  const [buildingComponent, setBuildingComponent]=useState([<Building/>])
+  const [landComponent, setLandComponent]=useState([<Land/>])
+  const [carComponent, setCarComponent]=useState([<Car/>])
+  const addBuildingComponent=()=>{
+    buildingComponent.push(<Building/>);
+    setBuildingComponent([...buildingComponent]);
+  }
+  const addLandComponent=()=>{
+    landComponent.push(<Land/>);
+    setLandComponent([...landComponent]);
+  }
+  const addCarComponent=()=>{
+    carComponent.push(<Car/>);
+    setCarComponent([...carComponent]);
+  }
+  
+
+  const renderBuilding=()=>{
+    return buildingComponent
+  }
+  const renderLand=()=>{
+    return landComponent
+  }
+  const renderCar=()=>{
+    return carComponent
+  }
 
   return (
     <AssetContainer>
@@ -38,7 +67,11 @@ const Asset = ({view, nextView}) => {
           <a href="https://www.naver.com" style={{fontSize:"14px"}}>소득 확인 바로가기</a>
       </RowContainer>
       <ColContainer>
-        <RoundInput width={"80%"} height={"50px"} placeholder="월 평균 소득(원)"/>
+      <InputContainer>
+        <BlackText>월 평균 소득 (원)</BlackText>
+        <RoundInput width={"80%"} height={"50px"}/>
+      </InputContainer>
+       
       </ColContainer>
       <Line/>
       <RowContainer style={{gap:"10px", marginBottom:"50px"}}>
@@ -52,7 +85,7 @@ const Asset = ({view, nextView}) => {
                         <RadioBtn
                             type="radio"
                             value={option}
-                            checked={building===option}
+                            checked={Isbuilding===option}
                             onChange={ClickBuilding}
                         ></RadioBtn>
                         {option}
@@ -60,27 +93,9 @@ const Asset = ({view, nextView}) => {
                 ))}        
         </RadioBtns>
         <ColContainer style={{gap:"20px", margin:"50px 0"}}>
-              <RowContainer style={{gap:"10px", width: "90%", whiteSpace:"nowrap", overflowX:"auto"}}>
-                <Dropdown>
-                  <Dropdown.Toggle variant="success" id="dropdown-basic" style={{
-                    border: "1px solid #BECBFF",backgroundColor:"white",color:"black",borderRadius:"40px", height:"50px"
-                  }}>
-                    건물유형
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    {buildingDropDown.map((option)=>(
-                      <Dropdown.Item>{option}</Dropdown.Item>
-                    ))}
-                  </Dropdown.Menu>
-                </Dropdown>
-                <RoundInput height={"50px"} placeholder="우편번호"/>
-              </RowContainer>
-              <RowContainer style={{gap:"10px"}}>
-                <RoundInput  height={"50px"} placeholder="주소"></RoundInput>
-                <RoundInput  height={"50px"} placeholder="가격"/>
-                <RoundInput  height={"50px"} placeholder="건물 취득일"/>
-            </RowContainer>
-          
+        {renderBuilding()}
+        <img src='../../imgs/add.svg' onClick={()=>{addBuildingComponent();}}></img>
+            
             <RowContainer style={{width:"80%", marginTop:"50px"}}>
               <BlackText style={{width:"20%"}}>무주택 시작일</BlackText>
               <DateInput width={"80%"} height={"50px"}  placeholder="무주택 시작일" type="date"/>
@@ -91,7 +106,7 @@ const Asset = ({view, nextView}) => {
 
         <RowContainer style={{gap:"10px", marginBottom:"50px"}}>
           <BlackText size="36px" weight="700">ㅣ 토지 소유 여부</BlackText>
-          <a href="https://www.naver.com" style={{fontSize:"14px"}}>공시지가 확인 바로가기</a>
+          <a href="https://www.realtyprice.kr/notice/gsindividual/siteLink.htm" style={{fontSize:"14px"}}>공시지가 확인 바로가기</a>
         </RowContainer>
         <RadioBtns style={{marginBottom:"10px"}}>
                       {options.map((option)=>(
@@ -106,32 +121,15 @@ const Asset = ({view, nextView}) => {
                     </label>
                 ))}        
         </RadioBtns>
-          <ColContainer style={{gap:"20px", margin:"50px 0"}}>
-            <RowContainer style={{gap:"10px", width: "80%"}}>
-              <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic" style={{
-                    border: "1px solid #BECBFF",backgroundColor:"white",color:"black",borderRadius:"40px", height:"50px"
-                  }}>
-                    토지유형
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                    {buildingDropDown.map((option)=>(
-                      <Dropdown.Item>{option}</Dropdown.Item>
-                    ))}
-                </Dropdown.Menu>
-              </Dropdown>
-              <RoundInput height={"50px"} placeholder="우편번호"/>
-            </RowContainer>
-            <RowContainer style={{gap:"10px", width:"80%"}}>
-                <RoundInput width={"50%"} height={"50px"} placeholder="주소"></RoundInput>
-                <RoundInput  height={"50px"} placeholder="가격"/>
-            </RowContainer>
-          </ColContainer>
-
+        <ColContainer style={{margin: "50px 0", gap: "20px"}}>
+        {renderLand()}
+        <img src='../../imgs/add.svg' onClick={()=>{addLandComponent();}}></img> 
+        </ColContainer>
+       
         <Line/>
           <RowContainer style={{gap:"10px", marginBottom:"50px"}}>
             <BlackText size="36px" weight="700">ㅣ 자동차 소유 여부</BlackText>
-            <a href="https://www.naver.com" style={{fontSize:"14px"}}>차량 가액 확인 바로가기</a>
+            <a href="https://tewf.hometax.go.kr/websquare/websquare.html?w2xPath=/ui/wf/c/a/a/UTEWFCAA02.xml" style={{fontSize:"14px"}}>차량 가액 확인 바로가기</a>
           </RowContainer>
           <RadioBtns style={{marginBottom:"10px"}}>
             {options.map((option)=>(
@@ -147,21 +145,8 @@ const Asset = ({view, nextView}) => {
                 ))}        
             </RadioBtns>
             <ColContainer style={{gap:"20px", margin:"50px 0"}}>
-              <RowContainer style={{gap:"10px", width: "80%"}}>
-                <Dropdown>
-                  <Dropdown.Toggle variant="success" id="dropdown-basic" style={{
-                    border: "1px solid #BECBFF",backgroundColor:"white",color:"black",borderRadius:"40px", height:"50px"
-                  }}>
-                    차량 종류
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    {buildingDropDown.map((option)=>(
-                      <Dropdown.Item>{option}</Dropdown.Item>
-                    ))}
-                  </Dropdown.Menu>
-                </Dropdown>
-                <RoundInput width={"60%"} height={"50px"} placeholder="가격"/>
-              </RowContainer>
+             {renderCar()}
+             <img src='../../imgs/add.svg' onClick={()=>{addCarComponent();}}></img> 
             </ColContainer>
              
             <BtnContainer>
@@ -175,7 +160,8 @@ const Asset = ({view, nextView}) => {
 
 const mapStateToProps=({view})=>{
   return{
-    view: view.view
+    view: view.view,
+    
   }
 }
 const mapDispatchToProps={
