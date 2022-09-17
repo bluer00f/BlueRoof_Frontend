@@ -21,7 +21,7 @@ const Building = ({building, AddBuilding}) => {
   }
   return (
     <BuildingContainer>
-        <RowContainer style={{gap:"10px", width: "90%", whiteSpace:"nowrap", overflowX:"auto"}}>
+        <RowContainer style={{gap:"10px", width: "90%", }}>
                     <Dropdown>
                       <Dropdown.Toggle variant="success" id="dropdown-basic" style={{
                         border: "1px solid #BECBFF",backgroundColor:"white",color:"black",borderRadius:"40px", height:"50px"
@@ -35,9 +35,10 @@ const Building = ({building, AddBuilding}) => {
                       </Dropdown.Menu>
                     </Dropdown>
                     <RoundInput height={"50px"} placeholder="우편번호"/>
+                    <RoundInput   height={"50px"} placeholder="주소" onChange={(e)=>{changeInput(e)}} onClick={onBlurInput}></RoundInput>
                   </RowContainer>
                   <RowContainer style={{ width: "90%",gap:"10px",}}>
-                    <RoundInput  height={"50px"} placeholder="주소" onChange={(e)=>{changeInput(e)}} onClick={onBlurInput}></RoundInput>
+                    <RoundInput  height={"50px"} placeholder="건물면적"/>
                     <RoundInput  height={"50px"} placeholder="가격"/>
                     <RoundInput  height={"50px"} placeholder="건물 취득일"/>
                   </RowContainer>

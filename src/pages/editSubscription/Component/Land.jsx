@@ -9,19 +9,9 @@ const Land = () => {
   return (
     <LandContainer>
         <RowContainer style={{gap:"10px", width: "90%", whiteSpace:"nowrap", overflowX:"auto"}}>
-                    <Dropdown>
-                      <Dropdown.Toggle variant="success" id="dropdown-basic" style={{
-                        border: "1px solid #BECBFF",backgroundColor:"white",color:"black",borderRadius:"40px", height:"50px"
-                      }}>
-                        건물유형
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                        {buildingDropDown.map((option)=>(
-                          <Dropdown.Item>{option}</Dropdown.Item>
-                        ))}
-                      </Dropdown.Menu>
-                    </Dropdown>
-                    <RoundInput height={"50px"} placeholder="우편번호"/>
+                    
+                    <RoundInput width={"30%"} height={"50px"} placeholder="우편번호"/>
+                    <RoundInput width={"70%"} height={"50px"} placeholder="토지 면적"/>
                   </RowContainer>
                   <RowContainer style={{ width: "90%",gap:"10px",}}>
                     <RoundInput  height={"50px"} placeholder="주소" ></RoundInput>

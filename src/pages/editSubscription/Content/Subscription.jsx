@@ -11,11 +11,14 @@ import { nextView, prevView } from '../../../redux'
 const Subscription = ({view, nextView}) => {
     const ranks=["1순위","2순위"];
     const banks=["주택청약종저축", "청약저축", "청약예금", "청약부금"];
+    const radios=["예", "아니오"];
 
     const [specialRanking, setSpecialRanking]=useState("1순위");
     const [ranking, setRanking]=useState("1순위");
     const [rankHistory, setRankHistory]=useState("1순위");
     const [bank, setBank]=useState("주택청약종합저축");
+    const [radio, setRadio]=useState("");
+    const [cnt, setCnt]=useState(0);
 
     const ClickSpecialRank=(e)=>{
         setSpecialRanking(e.target.value);
@@ -28,6 +31,9 @@ const Subscription = ({view, nextView}) => {
     }
     const ClickBank=(e)=>{
         setBank(e.target.value);
+    }
+    const ClickRadio=(e)=>{
+        setRadio(e.target.value);
     }
     const ClickNext=()=>{
         nextView();
@@ -117,12 +123,65 @@ const Subscription = ({view, nextView}) => {
             <BlackText size="36px" weight="700">ㅣ 청약 통장 가입일</BlackText>
             <a href="https://www.naver.com" style={{fontSize:"14px"}}>가입일 확인 바로가기</a>
         </RowContainer>
-        <ColContainer style={{marginBottom:"50px"}}>
+        <ColContainer style={{marginBottom:"50px", gap: "30px"}}>
             <InputContainer>
-            <BlackText>가입일자</BlackText>
-            <RoundInput width={"80%"} height={"50px"}/> 
+                <BlackText>가입일자</BlackText>
+                <RoundInput width={"80%"} height={"50px"}/> 
             </InputContainer>
-           
+            <InputContainer>
+                <BlackText>만 19세 이전 가입했나요?</BlackText>
+               
+                    {radios.map((r)=>(
+                        <label>
+                        <RadioBtn
+                            type="radio"
+                            value={r}
+                            checked={radio===r}
+                            onChange={ClickRadio}
+                        ></RadioBtn>
+                        {r}
+                        </label>
+                ))}        
+            </InputContainer>
+            {
+                radio==="예" ?
+               <>
+                <InputContainer>
+                <BlackText>미성년 납입 횟수</BlackText>
+                <RoundInput width={"70%"} height={"50px"} onChange={(e)=> setCnt(e.target.value)}/>
+                </InputContainer>
+                {
+                    cnt>= 24
+                    ?
+                    <>
+                    <InputContainer>
+                        <BlackText>미성년 총 납입 금액</BlackText>
+                        <RoundInput width={"65%"} height={"50px"} />
+                        </InputContainer>
+                        <InputContainer>
+                        <BlackText>미성년일때의 납입 중 <br/>금액이 높은 순으로 24회의 합</BlackText>
+                        <RoundInput width={"50%"} height={"50px"} />
+                    </InputContainer>
+                    </>
+                    :
+                    <>
+                    <InputContainer>
+                        <BlackText>총 금액</BlackText>
+                        <RoundInput width={"80%"} height={"50px"} />
+                        </InputContainer>
+                        <InputContainer>
+                        <BlackText>납입 횟수</BlackText>
+                        <RoundInput  width={"80%"} height={"50px"}/>
+                    </InputContainer>
+                    </>
+                }
+               </>
+               
+                :
+                <>
+                </>
+
+            }
         </ColContainer>
         <BtnContainer>
             <BlueRoundBtn onClick={ClickNext}>다음 &gt;</BlueRoundBtn>
