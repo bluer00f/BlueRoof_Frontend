@@ -10,7 +10,8 @@ import { nextView, prevView } from '../../../redux'
 
 const Subscription = ({view, nextView}) => {
     const ranks=["1순위","2순위"];
-    const banks=["주택청약종저축", "청약저축", "청약예금", "청약부금"];
+    const banks=["주택청약종합저축", "청약저축", "청약예금", "청약부금"];
+    const winnings=["예", "아니오"];
     const radios=["예", "아니오"];
 
     const [specialRanking, setSpecialRanking]=useState("1순위");
@@ -18,6 +19,7 @@ const Subscription = ({view, nextView}) => {
     const [rankHistory, setRankHistory]=useState("1순위");
     const [bank, setBank]=useState("주택청약종합저축");
     const [radio, setRadio]=useState("");
+    const [winning, setWinning]=useState("");
     const [cnt, setCnt]=useState(0);
 
     const ClickSpecialRank=(e)=>{
@@ -34,6 +36,9 @@ const Subscription = ({view, nextView}) => {
     }
     const ClickRadio=(e)=>{
         setRadio(e.target.value);
+    }
+    const ClickWinning=(e)=>{
+        setWinning(e.target.value)
     }
     const ClickNext=()=>{
         nextView();
@@ -77,19 +82,22 @@ const Subscription = ({view, nextView}) => {
        <Line/>
         <BlackText size="36px" weight="700">ㅣ 2년 내 당첨 이력</BlackText>
         <RadioBtns style={{marginBottom:"10px"}}>
-        {radios.map((radio)=>(
+        {winnings.map((r)=>(
                     <label>
                         <RadioBtn
                             type="radio"
-                            value={radio}
-                            checked={radio===radio}
-                            onChange={ClickRankHistory}
+                            value={r}
+                            checked={winning===r}
+                            onChange={ClickWinning}
                         ></RadioBtn>
-                        {radio}
+                        {r}
                     </label>
                 ))}        
         </RadioBtns>
-        <ColContainer style={{gap:"20px", margin:"30px 0"}}>
+        {
+            winning==="예"
+            ?
+            <ColContainer style={{gap:"20px", margin:"30px 0"}}>
             <InputContainer>
                 <BlackText>당첨 일자</BlackText>
                 <RoundInput width={"80%"} height={"50px"} placeholder="YYYYMMDD"/>
@@ -104,6 +112,11 @@ const Subscription = ({view, nextView}) => {
                 <RoundInput width={"80%"} height={"50px"} placeholder="당첨아파트명"/>
             </RowContainer>
         </ColContainer>
+            :
+            <>
+            </>
+        }
+       
         <Line/>
         <BlackText size="36px" weight="700">ㅣ 청약 통장 종류</BlackText>
         <RadioBtns>

@@ -10,9 +10,11 @@ import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table'
 import Table from '../Component/Table'
 const Family = () => {
     const whether=["예", "아니오"];
+    
     const [isMarried, setIsMarried]=useState("예");
     const [isHead, setIsHead]=useState("예");
     const [isForeign , setIsForeign]=useState("예");
+    const [separate, setSeparate]=useState("예");
     const [isWon, setIsWon]=useState("예");
     
 
@@ -27,6 +29,9 @@ const Family = () => {
     }
     const ClickWon=(e)=>{
         setIsWon(e.target.value);
+    }
+    const ClickSeparate=(e)=>{
+        setSeparate(e.target.value);
     }
 
     const cellEditProp = {
@@ -90,8 +95,8 @@ const Family = () => {
                         <RadioBtn
                             type="radio"
                             value={w}
-                            checked={isForeign===w}
-                            onChange={ClickForeign}
+                            checked={separate===w}
+                            onChange={ClickSeparate}
                         ></RadioBtn>
                         {w}
                     </label>
@@ -108,20 +113,27 @@ const Family = () => {
                     <Input placeholder='YYYY-MM-DD'></Input>
                 </RowContainer>
                 <RowContainer style={{width:"100%", gap:"10%"}}>
-                    <InputTitle>청액당첨이력</InputTitle>
+                    <InputTitle>청약당첨이력</InputTitle>
                     {whether.map((w)=>(
                     <label>
                         <RadioBtn
                             type="radio"
                             value={w}
-                            checked={isForeign===w}
-                            onChange={ClickForeign}
+                            checked={isWon===w}
+                            onChange={ClickWon}
                         ></RadioBtn>
                         {w}
                     </label>
                     ))}
                 </RowContainer>
-                <Input placeholder='YYYY-MM-DD' style={{marginLeft:"10%"}}></Input>
+                {
+                    isWon ==="예"
+                    ?
+                    <Input placeholder='YYYY-MM-DD' style={{marginLeft:"10%"}}></Input>
+                    :
+                    <></>
+                }
+                
                 <RowContainer width={"100%"}>
                     <InputTitle>월 평균 소득</InputTitle>
                     <Input style={{marginRight:"5px"}}></Input>
@@ -132,7 +144,7 @@ const Family = () => {
         <Line/>
      
      <Table/>
-     
+
         <BtnContainer>
             <BlueRoundBtn>저장하기</BlueRoundBtn>
         </BtnContainer>
