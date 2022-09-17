@@ -39,6 +39,7 @@ const Home = () => {
     </FullPage>
     <ChatIcon/>
     </div>
+  
     
   )
 }
