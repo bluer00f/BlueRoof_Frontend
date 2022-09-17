@@ -92,16 +92,23 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
                     </label>
                 ))}        
         </RadioBtns>
-        <ColContainer style={{gap:"20px", margin:"50px 0"}}>
-        {renderBuilding()}
-        <img src='../../imgs/add.svg' onClick={()=>{addBuildingComponent();}}></img>
-            
-            <RowContainer style={{width:"80%", marginTop:"50px"}}>
-              <BlackText style={{width:"20%"}}>무주택 시작일</BlackText>
-              <DateInput width={"80%"} height={"50px"}  placeholder="무주택 시작일" type="date"/>
-          </RowContainer>
-        </ColContainer>
-
+        {
+          Isbuilding==="예"
+          ?
+          <ColContainer style={{gap:"20px", margin:"50px 0"}}>
+          {renderBuilding()}
+          <img src='../../imgs/add.svg' onClick={()=>{addBuildingComponent();}}></img>
+              
+              <RowContainer style={{width:"80%", marginTop:"50px"}}>
+                <BlackText style={{width:"20%"}}>무주택 시작일</BlackText>
+                <DateInput width={"80%"} height={"50px"}  placeholder="무주택 시작일" type="date"/>
+            </RowContainer>
+          </ColContainer>
+  
+          :<>
+          </>
+        }
+       
         <Line/>
 
         <RowContainer style={{gap:"10px", marginBottom:"50px"}}>
@@ -121,10 +128,18 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
                     </label>
                 ))}        
         </RadioBtns>
-        <ColContainer style={{margin: "50px 0", gap: "20px"}}>
-        {renderLand()}
-        <img src='../../imgs/add.svg' onClick={()=>{addLandComponent();}}></img> 
-        </ColContainer>
+        {
+          land==="예"
+          ?
+          <ColContainer style={{margin: "50px 0", gap: "20px"}}>
+          {renderLand()}
+          <img src='../../imgs/add.svg' onClick={()=>{addLandComponent();}}></img> 
+          </ColContainer>
+         
+          :
+          <>
+          </>
+          }
        
         <Line/>
           <RowContainer style={{gap:"10px", marginBottom:"50px"}}>
@@ -144,11 +159,19 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
                     </label>
                 ))}        
             </RadioBtns>
-            <ColContainer style={{gap:"20px", margin:"50px 0"}}>
-             {renderCar()}
-             <img src='../../imgs/add.svg' onClick={()=>{addCarComponent();}}></img> 
-            </ColContainer>
-             
+            {
+              car==="예"
+              ?
+              <ColContainer style={{gap:"20px", margin:"50px 0"}}>
+              {renderCar()}
+              <img src='../../imgs/add.svg' onClick={()=>{addCarComponent();}}></img> 
+             </ColContainer>
+              
+              :
+              <>
+              </>
+            }
+           
             <BtnContainer>
               <BlueRoundBtn onClick={ClickNext}>다음 &gt;</BlueRoundBtn>
             </BtnContainer>
