@@ -1,11 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from 'styled-components'
 import { BlueRoundBtn } from "../../../components/commons/Buttons";
 import { RowContainer, ColContainer } from "../../../components/commons/Container";
 import { BlackText } from "../../../components/commons/Font";
 import { RoundBox } from "../../Signup";
+import PopupResult from "./PopupResult";
 
-const result =() => {
+const Result =() => {
+    const [popupResult, setPopupResult] = useState(false)
+
+    const onClickPopupOpen = () => {
+        setPopupResult(true);
+    }
+    const onClickPopupClose = () => {
+        setPopupResult(false);
+    }
+
     //임시 데이터 -> 나중에 api로 받아와야함
       const checks=["서울은평뉴타운 디에트르더퍼스트", "힐스테이트 관악뉴포레", "보라매한국 아델리움앤클래스", "용인흥덕2", "서광교파크뷰", "의왕고천A-2블록 행복주택", "abcedf"]
       const citys=["서울", "서울", "서울", "용인", "수원", "의왕", "서울"]
@@ -14,7 +24,7 @@ const result =() => {
       const alert2=["• 청약 과열 지구","", "", "• 청약 과열 지구", "• 청약 과열 지구", "", "• 청약 과열 지구"]
       const areas=["069.9932", "084.9692A", "084.9692B", "084.9513C", "084.9443D"]
       const qualifys=["적격", "부적격"]
-      const score="8"
+      const score="-"
 
       const onClickHistory = () => {
         window.location.href="/"
@@ -52,12 +62,15 @@ const result =() => {
                         | 청약 자격 진단 결과
                     </BlackText>
                     <RoundBox width="100%" height="45px" style={{marginTop: "20px", paddingLeft: "30px"}}>
-                        {qualifys[0]}
+                        {qualifys[1]}
                     </RoundBox>
-                    <a href="/signup" style={{width: "100%", textAlign: "right", fontSize:"15px", fontWeight:"bold", color:"#0028FF", margin:" 10px 20px 0 0"}}>
-                        부적격 사유 확인
-                    </a>
-                   
+                    <React.Fragment>
+                        <p onClick={onClickPopupOpen} style={{textDecorationLine:"underline", width: "100%", textAlign: "right", fontSize:"15px", fontWeight:"bold", color:"#0028FF", margin:" 10px 20px 0 0"}}>
+                        부적격 사유 확인</p>
+                        <PopupResult open={popupResult} close={onClickPopupClose} header="부적격 사유 확인">
+                            배우자의 5년 내 청약 당첨 이력 존재
+                        </PopupResult>
+                    </React.Fragment>
                     <BlackText size={"20px"} style={{fontWeight: "bold", width: "100%", marginTop: "40px"}}>
                         | 청약 가점
                     </BlackText>
@@ -85,7 +98,7 @@ const result =() => {
 
 }
 
-export default result
+export default Result
 
 const ResultContainer=styled.div`
     width: 90%;

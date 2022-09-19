@@ -4,7 +4,7 @@ import { BlackText } from '../../../components/commons/Font'
 import { ColContainer, RowContainer } from '../../../components/commons/Container'
 
 
-const Check4 = () => {
+const Check5 = () => {
   //임시 데이터 -> 나중에 api로 받아와야함
     const checks=["서울은평뉴타운 디에트르더퍼스트", "힐스테이트 관악뉴포레", "보라매한국 아델리움앤클래스", "용인흥덕2", "서광교파크뷰", "의왕고천A-2블록 행복주택", "abcedf"]
     const citys=["서울", "서울", "서울", "용인", "수원", "의왕", "서울"]
@@ -69,7 +69,7 @@ const Check4 = () => {
   )
 }
 
-export default Check4
+export default Check5
 
 const CheckContainer=styled.div`
     width: 90%;

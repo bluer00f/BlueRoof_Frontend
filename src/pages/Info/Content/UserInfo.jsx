@@ -9,6 +9,7 @@ import { Dropdown } from 'react-bootstrap'
 import "../../../App.css"
 import { BlueRoundBtn, BorderWhiteBtn } from "../../../components/commons/Buttons";
 import Avatar from "react-avatar"; //npm install react-avatar --save
+import PopupUser from "./PopupUser";
 
 
 const Check = () => {
@@ -16,6 +17,18 @@ const Check = () => {
     // 서버에 저장된 정보 받아오는 코드로 변경해야함
     const [Image, setImage] = useState("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png");
     const fileInput = useRef(null);
+    const [popup, setPopup] = useState(false)
+
+    const onClickPopupOpen = () => {
+        setPopup(true);
+    }
+    const onClickPopupClose = () => {
+        setPopup(false);
+    }
+    const onClickUnregister = () => {
+        console.log("탈퇴");
+        setPopup(false);
+    }
     const onClickProfile = (e) => {
         if (e.target.files[0]){
             setImage(e.target.files[0])
@@ -156,7 +169,12 @@ const Check = () => {
                 <BtnContainer width={"40%"}>
                     <BlueRoundBtn onClick={onClickModify} style={{width:"100px", height:"30px"}}>수정하기</BlueRoundBtn>
                 </BtnContainer>
-                    <p onClick={"#"} style={{textDecorationLine:"underline", width:"30%", textAlign: "right", fontSize:"15px", fontWeight:"bold", color:"red", paddingRight:"10px"}}>회원탈퇴</p>
+                    <React.Fragment>
+                        <p onClick={onClickPopupOpen} style={{textDecorationLine:"underline", width:"30%", textAlign: "right", fontSize:"15px", fontWeight:"bold", color:"red", paddingRight:"10px"}}>회원탈퇴</p>
+                        <PopupUser open={popup} close={onClickPopupClose} unregister={onClickUnregister} header="회원탈퇴">
+                            정말 탈퇴하시겠습니까?
+                        </PopupUser>
+                    </React.Fragment>
             </Box>
         </ColContainer>
     )
