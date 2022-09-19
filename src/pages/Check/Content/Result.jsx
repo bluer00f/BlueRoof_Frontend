@@ -68,7 +68,7 @@ const Result =() => {
                         <p onClick={onClickPopupOpen} style={{textDecorationLine:"underline", width: "100%", textAlign: "right", fontSize:"15px", fontWeight:"bold", color:"#0028FF", margin:" 10px 20px 0 0"}}>
                         부적격 사유 확인</p>
                         <PopupResult open={popupResult} close={onClickPopupClose} header="부적격 사유 확인">
-                            2년 내 당첨 이력 존재
+                            배우자의 5년 내 청약 당첨 이력 존재
                         </PopupResult>
                     </React.Fragment>
                     <BlackText size={"20px"} style={{fontWeight: "bold", width: "100%", marginTop: "40px"}}>
