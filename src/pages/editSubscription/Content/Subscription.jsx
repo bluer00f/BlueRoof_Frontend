@@ -80,7 +80,7 @@ const Subscription = ({view, nextView}) => {
                 ))}        
         </RadioBtns>
        <Line/>
-        <BlackText size="36px" weight="700">ㅣ 2년 내 당첨 이력</BlackText>
+        <BlackText size="36px" weight="700">ㅣ 청약 당첨 이력</BlackText>
         <RadioBtns style={{marginBottom:"10px"}}>
         {winnings.map((r)=>(
                     <label>
@@ -102,15 +102,6 @@ const Subscription = ({view, nextView}) => {
                 <BlackText>당첨 일자</BlackText>
                 <RoundInput width={"80%"} height={"50px"} placeholder="YYYYMMDD"/>
             </InputContainer>
-            <InputContainer>
-            <BlackText>당첨 지역</BlackText>
-            <RoundInput width={"80%"} height={"50px"}/> 
-            </InputContainer>
-           
-            <RowContainer style={{gap:"10px", width: "80%"}}>
-                <RoundInput width={"20%"} height={"50px"} placeholder="우편번호"></RoundInput>
-                <RoundInput width={"80%"} height={"50px"} placeholder="당첨아파트명"/>
-            </RowContainer>
         </ColContainer>
             :
             <>
