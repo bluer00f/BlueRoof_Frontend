@@ -4,6 +4,7 @@ import store from './redux/store';
 import { Provider } from 'react-redux';
 import './App.css';
 import Router from './Router';
+import React from 'react';
 
 function App() {
   return (
