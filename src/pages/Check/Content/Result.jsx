@@ -57,6 +57,7 @@ const result =() => {
                     <a href="/signup" style={{width: "100%", textAlign: "right", fontSize:"15px", fontWeight:"bold", color:"#0028FF", margin:" 10px 20px 0 0"}}>
                         부적격 사유 확인
                     </a>
+                   
                     <BlackText size={"20px"} style={{fontWeight: "bold", width: "100%", marginTop: "40px"}}>
                         | 청약 가점
                     </BlackText>
@@ -65,7 +66,10 @@ const result =() => {
                     </RoundBox>
                     <a href="/signup" style={{width: "100%", textAlign: "right", fontSize:"15px", fontWeight:"bold", color:"#0028FF", margin:" 10px 20px 0 0"}}>
                         가점 내역 확인
-                    </a>                    
+                    </a>  
+                    
+                   
+               
                     <RowContainer style={{justifyContent: "right", width: "100%", height: "30%", marginTop: "20px"}}>
                         <BlueRoundBtn onClick={onClickHistory} style={{width: "60px", height: "15px", border: "2px solid #0028FF", color: "#0028FF", backgroundColor: "white", margin: "5px", lineHeight: "15px", textAlign: "center"}}>
                             이전내역

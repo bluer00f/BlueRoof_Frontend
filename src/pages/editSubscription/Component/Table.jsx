@@ -38,8 +38,9 @@ const Table = () => {
                 <TableHeaderColumn  dataField='head' width='10%'>세대주 여부</TableHeaderColumn>
                 <TableHeaderColumn dataField='income' widht='30%'>연간 세전 소득</TableHeaderColumn>
                 <TableHeaderColumn dataField='homeless' width='10%'>무주택 여부</TableHeaderColumn>
-                <TableHeaderColumn dataField='subscript' width='15%'>2년 내 청약 당첨 이력</TableHeaderColumn>
-          </BootstrapTable>,
+                <TableHeaderColumn dataField='subscript' width='15%'>청약 당첨 일자</TableHeaderColumn>
+          </BootstrapTable>
+          <div style={{fontSize:"10px", color: "#3572EE"}}>*청약 당첨 이력이 있는 경우에만 청약당첨일자를 적어주세요(YYYYMMDD)</div>
             </div>
           )
     
