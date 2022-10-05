@@ -6,28 +6,29 @@ import { useState } from 'react'
 import { RoundInput } from '../components/commons/Inputs'
 import Flex from '../components/commons/Flex'
 import { BlueText } from '../components/commons/Font'
-
+import axios from 'axios'
 const Login = () => {
     const [inputId, setInputId] = useState('')
     const [inputPw, setInputPw] = useState('')
 
-    const handleInputId = (e) => {
-        setInputId(e.target.vaule)
-    }
-
-    const handleInputPw = (e) => {
-        setInputPw(e.target.vaule)
-    }
-
     const onClickLogin = () => {
-        console.log('click login')
+        axios.post('http://52.78.189.54:8080/api/v1/user/login', {
+            loginId: inputId,
+            password: inputPw
+        })
+        .then((res)=>{
+            console.log(res.data)
+            localStorage.setItem("accessToken", res.data.accessToken);
+            localStorage.setItem("refreshToken", res.data.refreshToken);
+            window.location.href='/';
+        })
     }
 
     return (
         <LoginContainer>
             <ColContainer style={{gap:"10px", margin:"30px 0"}}>
-                <RoundInput value={inputId} onChange={handleInputId} width={"400px"} height={"50px"} placeholder="아이디"/>
-                <RoundInput value={inputPw} onChange={handleInputPw} width={"400px"} height={"50px"} placeholder="비밀번호"/>
+                <RoundInput onChange={(e)=>setInputId(e.target.value)} width={"400px"} height={"50px"} placeholder="아이디"/>
+                <RoundInput onChange={(e)=>setInputPw(e.target.value)} width={"400px"} height={"50px"} placeholder="비밀번호" type='password'/>
             </ColContainer>
             <BtnContainer style={{gap:"20px"}}>
                 <BlueRoundBtn onClick={onClickLogin} style={{width:"360px", height:"30px"}}>로그인</BlueRoundBtn>

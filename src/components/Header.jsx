@@ -1,6 +1,19 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
 const Header = () => {
+  const [isLogin, setIsLogin]=useState(false);
+  useEffect(() => {
+
+    if (localStorage.getItem("accessToken")){
+      console.log('hi')
+      setIsLogin(true)
+    }else{
+      setIsLogin(false)
+    }
+    console.log(isLogin)
+  }, [])
+  
+  
   return (
   
     <Navbar collapseOnSelect expand="lg" variant="light" style={{borderBottom:"1px solid #D3D3D3"}}>
@@ -21,9 +34,18 @@ const Header = () => {
       </NavDropdown>
     </Nav>
     <Nav>
-      <Nav.Link eventKey={2} href="/login">
-        로그아웃
-      </Nav.Link>
+      {
+      isLogin === true?
+
+       <Nav.Link eventKey={2} href="/login">
+       로그아웃
+     </Nav.Link>
+     :
+     <Nav.Link eventKey={2} href="/login">
+       로그인
+     </Nav.Link>
+      }
+     
     </Nav>
   </Navbar.Collapse>
   </Container>
