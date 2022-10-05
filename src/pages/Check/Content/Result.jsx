@@ -24,7 +24,7 @@ const Result =() => {
       const alert2=["• 청약 과열 지구","", "", "• 청약 과열 지구", "• 청약 과열 지구", "", "• 청약 과열 지구"]
       const areas=["069.9932", "084.9692A", "084.9692B", "084.9513C", "084.9443D"]
       const qualifys=["적격", "부적격"]
-      const score="-"
+      const score="11"
 
       const onClickHistory = () => {
         window.location.href="/"
@@ -54,7 +54,7 @@ const Result =() => {
                     {"|"+types[0]}
                   </TypeBox>
                   <AreaBox>
-                    {areas[0]} 형
+                    {areas[3]} 형
                   </AreaBox>
                 </ImgBox>
                 <ColContainer width={"55%"} height={"100%"} style={{marginLeft: "30px"}}>
@@ -62,7 +62,7 @@ const Result =() => {
                         | 청약 자격 진단 결과
                     </BlackText>
                     <RoundBox width="100%" height="45px" style={{marginTop: "20px", paddingLeft: "30px"}}>
-                        {qualifys[1]}
+                        {qualifys[0]}
                     </RoundBox>
                     <React.Fragment>
                         <p onClick={onClickPopupOpen} style={{textDecorationLine:"underline", width: "100%", textAlign: "right", fontSize:"15px", fontWeight:"bold", color:"#0028FF", margin:" 10px 20px 0 0"}}>

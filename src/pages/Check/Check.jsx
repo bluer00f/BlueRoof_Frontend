@@ -7,6 +7,7 @@ import Check2 from './Content/Check2'
 import Check3 from './Content/Check3'
 import Check4 from './Content/Check4'
 import Check5 from './Content/Check5'
+import Check6 from './Content/Check6'
 import Result from './Content/Result'
 
 const Check = () => {
@@ -22,14 +23,16 @@ const Check = () => {
                     {
                         index === 0 
                         ? <Check1/>
-                        : index ===1
+                        : index === 1
                         ? <Check2/>
-                        : index===2
+                        : index === 2
                         ? <Check3/>
-                        : index===3
+                        : index === 3
                         ? <Check4/>
-                        : index===4
+                        : index === 4
                         ? <Check5/>
+                        : index === 5
+                        ? <Check6/>
                         : <Result/>
                     }
                     
