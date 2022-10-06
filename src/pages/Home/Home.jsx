@@ -8,6 +8,7 @@ import Landing2 from './Landing2'
 import Landing3 from './Landing3'
 import Landing4 from './Landing4'
 import ChatIcon from '../../components/ChatIcon'
+import Header from '../../components/Header'
 const Home = () => {
   const SectionStyle={
     height: '100vh',
@@ -21,7 +22,9 @@ const Home = () => {
     <div style={{backgroundColor: "#F9FBFF"}}>
 
     <FullPage>
-      <FullpageNavigation/>
+    <Header/>
+    <FullpageNavigation/>
+    
       <FullPageSections>
         <FullpageSection style={SectionStyle}>
           <Landing1/>
@@ -31,9 +34,6 @@ const Home = () => {
         </FullpageSection>
         <FullpageSection style={SectionStyle}>
            <Landing3/>
-        </FullpageSection>
-        <FullpageSection style={SectionStyle}>
-           <Landing4/>
         </FullpageSection>
       </FullPageSections>
     </FullPage>

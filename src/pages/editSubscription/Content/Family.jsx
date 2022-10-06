@@ -103,10 +103,8 @@ const Family = () => {
                     ))}
                 </RowContainer>
                 <RowContainer style={{width:"100%"}}>
-                    <InputTitle>주민등록번호</InputTitle>
-                    <Input style={{width:"23%"}}></Input>
-                    <div style={{margin:"0 2%"}}>-</div>
-                    <Input style={{width:"23%"}}></Input>
+                    <InputTitle>생년월일</InputTitle>
+                    <Input placeholder='YYYY-MM-DD'></Input>
                 </RowContainer>
                 <RowContainer style={{width:"100%"}}>
                     <InputTitle>혼인신고일</InputTitle>
