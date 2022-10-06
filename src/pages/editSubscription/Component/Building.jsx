@@ -9,9 +9,10 @@ import {  AddBuilding} from '../../../redux'
 const Building = ({building, AddBuilding}) => {
     const buildingDropDown=["단독주택", "공동주택","오피스텔","공장","상가","부속토지"];
    const [state, setState]=useState("");
+   const [buildingType, setBuildingType]=useState([]);
    const [addr, setAddr]=useState([]);
    //state값을 addr[cnt]에 넣기
-
+  
    const changeInput=(e)=>{
     setState(e.target.value)   
   }
@@ -22,18 +23,18 @@ const Building = ({building, AddBuilding}) => {
   return (
     <BuildingContainer>
         <RowContainer style={{gap:"10px", width: "90%", }}>
-                    <Dropdown>
-                      <Dropdown.Toggle variant="success" id="dropdown-basic" style={{
-                        border: "1px solid #BECBFF",backgroundColor:"white",color:"black",borderRadius:"40px", height:"50px"
-                      }}>
-                        건물유형
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                        {buildingDropDown.map((option)=>(
-                          <Dropdown.Item>{option}</Dropdown.Item>
-                        ))}
-                      </Dropdown.Menu>
-                    </Dropdown>
+                  
+                      <select style={{width:"20%"}}  onChange={(e)=>console.log(e.target.value)}>
+                      {
+                      buildingDropDown.map((option)=>(
+                        <option>
+                            {option}
+                        </option>
+                      ))
+                    }
+                    
+                    </select>
+                    
                     <RoundInput height={"50px"} placeholder="우편번호"/>
                     <RoundInput   height={"50px"} placeholder="주소" onChange={(e)=>{changeInput(e)}} onClick={onBlurInput}></RoundInput>
                   </RowContainer>

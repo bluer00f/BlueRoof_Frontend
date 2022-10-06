@@ -8,7 +8,7 @@ import { Dropdown } from 'react-bootstrap'
 import '../App.css';
 import { BlueRoundBtn, BorderWhiteBtn } from "../components/commons/Buttons";
 import Avatar from "react-avatar"; //npm install react-avatar --save
-
+import axios from "axios";
 
 const Signup = () => {
     const [Image, setImage] = useState("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png");
@@ -32,12 +32,19 @@ const Signup = () => {
 
     const SexDropDown = ["남", "여"];
     const [Selected, setSelected] = useState("");
-    
+    const [sex, setSex]=useState(0);
+    const clickSex=(e)=>{
+        if (e.target.value==='남'){
+            setSex(0);
+        }else{
+            setSex(1);
+        }
+    }
     const handleSelect = (e) => {
         setSelected(e.target.value);
         console.log(e.target.value);
     };
-
+    const [birth, setBirth]=useState('')
     const soldiers = ["예", "아니오"]
 
     const [name, setName] = useState('')
@@ -59,23 +66,54 @@ const Signup = () => {
     const onClickAddressCheck = () => {
         console.log('주소찾기')
     }
-
+    const [householderFlag, setHouseHolderFlag]=useState('');
     const houseHolders=["예", "아니오"]
     const [houseHolder, setHouseHolder] = useState("예")
     const onClickHouseHolder=(e)=>{
         setHouseHolder(e.target.value);
+       
+        if (e.target.value==='예'){
+            setHouseHolderFlag('Y')
+        }else{
+            setHouseHolderFlag('N')
+        }
     }
 
     const [soldier, setSoldier] = useState("아니오")
     const [sDate, setSDate] = useState('')
 
+    const [sFlag, setSFlag]=useState('')
     const onClickSoldier = (e) => {
         setSoldier(e.target.value)
+        
+        if (e.target.value==='예'){
+            setSFlag('Y')
+        }else{
+            setSFlag('N')
+        }
     }
 
     const onClickSignup = () => {
-        console.log("clcik signup")
-        window.location.href="/"
+        console.log( address, sDate, birth,email,sex,id,householderFlag,pw, phoneNum,sFlag, name,  zipCode)
+        axios.post('/api/v1/user/signup', {
+            address: address,
+            appointmentDate:sDate, 
+            birthday: birth,
+            email: email,
+            gender: sex,
+            loginId: id,
+            ownerFlag: householderFlag, 
+            password: pw,
+            phone: phoneNum,
+            soldierFlag: sFlag,
+            username: name, 
+            zipcode: zipCode
+        })
+        .then((res)=>{
+            console.log(res.data);
+        })
+        .then(alert('회원가입이 완료되었습니다!'))
+        //window.location.href="/"
     }
     return (
         <SignupContainer>
@@ -91,51 +129,47 @@ const Signup = () => {
                                 onClick={() => {fileInput.current.click()}} />
                         <ColContainer style={{gap:"15px"}}>
                             <RowContainer style={{gap:"15px"}}>
-                                <RoundInput width={"300px"} height={"50px"} placeholder="이름"/>
+                                <RoundInput width={"300px"} height={"50px"} placeholder="이름" onChange={(e)=>setName(e.target.value)}/>
 
-                                <Dropdown>
-                                    <Dropdown.Toggle
-                                        variant="success" id="dropdown-basic"
-                                        style={{border: "1px solid #BECBFF",backgroundColor:"white",color:"black",borderRadius:"40px", width:"100px", height:"50px"}}>
-                                        성별
-                                    </Dropdown.Toggle>
-                                    <Dropdown.Menu>
-                                        {SexDropDown.map((option)=>(
-                                            <Dropdown.Item key={option.id}>{option}</Dropdown.Item>
-                                        ))}
-                                    </Dropdown.Menu>
-                                        
-                                </Dropdown>
+                                <select style={{borderRadius:"40px", width:"80px", height:"50px",border: "1px solid #BECBFF", padding: '0 10px' }}  onChange={(e)=>clickSex(e)}>
+                                    {
+                                    SexDropDown.map((option)=>(
+                                        <option>
+                                            {option}
+                                        </option>
+                                    ))
+                                    }
+                                </select>
                                 
 
                             </RowContainer>
                             <RowContainer>
-                                <RoundInput width={"420px"} height={"50px"} placeholder="생년월일"/>
+                                <RoundInput width={"420px"} height={"50px"} placeholder="생년월일 (YYYY-MM-DD)" onChange={(e)=>setBirth(e.target.value)}/>
                             </RowContainer>
                         </ColContainer>
                     </RowContainer>
                     <div position="relative">
-                        <RoundInput width={"535px"} height={"50px"} placeholder="아이디"/>
+                        <RoundInput width={"535px"} height={"50px"} placeholder="아이디" onChange={(e)=>setId(e.target.value)}/>
                         <div style={{borderLeft:"1px solid #BECBFF", height:"50px", position:"absolute", marginTop:"-50px", marginLeft:"450px"}}/>
                         <BorderWhiteBtn onClick={onClickIdCheck} style={{width:"100px", height:"50px", position:"absolute", marginLeft:"-115px", padding:"0", border:"transparent", textAlign:"right"}}>중복확인</BorderWhiteBtn>
                     </div>
                     <div>
-                        <RoundInput width={"535px"} height={"50px"} placeholder="비밀번호"/>
+                        <RoundInput width={"535px"} height={"50px"} placeholder="비밀번호" onChange={(e)=>setPw(e.target.value)}/>
                     </div>
                     <div position="relative">
-                        <RoundInput width={"535px"} height={"50px"} placeholder="이메일"/>
+                        <RoundInput width={"535px"} height={"50px"} placeholder="이메일" onChange={(e)=>setEmail(e.target.value)}/>
                         <div style={{borderLeft:"1px solid #BECBFF", height:"50px", position:"absolute", marginTop:"-50px", marginLeft:"450px"}}/>
                         <BorderWhiteBtn onClick={onClickEmailCheck} style={{width:"100px", height:"50px", position:"absolute", marginLeft:"-115px", padding:"0", border:"transparent", textAlign:"right"}}>중복확인</BorderWhiteBtn>
                     </div>
                     <div position="relative">
-                        <RoundInput width={"535px"} height={"50px"} placeholder="전화번호"/>
+                        <RoundInput width={"535px"} height={"50px"} placeholder="전화번호" onChange={(e)=>setPhonNum(e.target.value)}/>
                         <div style={{borderLeft:"1px solid #BECBFF", height:"50px", position:"absolute", marginTop:"-50px", marginLeft:"450px"}}/>
                         <BorderWhiteBtn onClick={onClickEmailCheck} style={{width:"100px", height:"50px", position:"absolute", marginLeft:"-115px", padding:"0", border:"transparent", textAlign:"right"}}>인증하기</BorderWhiteBtn>
                     </div>
                     <RowContainer style={{gap:"15px"}}>
-                        <RoundInput width={"100px"} height={"50px"} placeholder="우편번호" />
+                        <RoundInput width={"100px"} height={"50px"} placeholder="우편번호" onChange={(e)=>setZipCode(e.target.value)}/>
                         <div position="relative" style={{gap:"15px"}}>
-                            <RoundInput width={"420px"} height={"50px"} placeholder="현 거주지 주소" />
+                            <RoundInput width={"420px"} height={"50px"} placeholder="현 거주지 주소" onChange={(e)=>setAddress(e.target.value)}/>
                             <div style={{borderLeft:"1px solid #BECBFF", height:"50px", position:"absolute", marginTop:"-50px", marginLeft:"335px"}}/>
                             <BorderWhiteBtn onClick={onClickAddressCheck} style={{width:"100px", height:"50px", position:"absolute", marginLeft:"-115px", padding:"0", border:"transparent", textAlign:"right"}}>주소찾기</BorderWhiteBtn>
                         </div>
@@ -175,7 +209,7 @@ const Signup = () => {
                                 ))}   
                             </RadioBtns>
                         </div>
-                        <RoundInput width={"150px"} height={"50px"} placeholder="임관일" />
+                        <RoundInput width={"150px"} height={"50px"} placeholder="임관일" onChange={(e)=>setSDate(e.target.value)}/>
                     </RowContainer>
                     <BtnContainer>
                         <BlueRoundBtn onClick={onClickSignup} style={{width:"100px", height:"30px", marginTop:"15px"}}>계정 만들기</BlueRoundBtn>

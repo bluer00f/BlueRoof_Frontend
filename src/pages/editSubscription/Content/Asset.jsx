@@ -20,15 +20,34 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
   const [Isbuilding, setIsBuilding]=useState("예");
   const [land,setLand]=useState("예");
   const [car, setCar]=useState("예");
-  
+  const [month, setMonth]=useState(0);
+  const [landArray, setLandArray]=useState([]);
   const ClickBuilding=(e)=>{
     setIsBuilding(e.target.value);
+    let buildingFlag='';
+    if(e.target.value==="예"){
+      buildingFlag="Y"
+    }else{
+      buildingFlag="N"
+    }
   }
   const ClickLand=(e)=>{
     setLand(e.target.value);
+    let landFlag='';
+    if(e.target.value==="예"){
+      landFlag="Y"
+    }else{
+      landFlag="N"
+    }
   }
   const ClickCar=(e)=>{
     setCar(e.target.value);
+    let carFlag='';
+    if(e.target.value==="예"){
+      carFlag="Y"
+    }else{
+      carFlag="N"
+    }
   }
   const ClickNext=()=>{
     nextView();
@@ -70,7 +89,7 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
       <ColContainer>
       <InputContainer>
         <BlackText>월 평균 소득 (원)</BlackText>
-        <RoundInput width={"80%"} height={"50px"}/>
+        <RoundInput width={"80%"} height={"50px"} onChange={(e)=>setMonth(e.target.value)}/>
       </InputContainer>
        
       </ColContainer>
