@@ -14,6 +14,7 @@ const Subscription = ({view, nextView}) => {
     const banks=["주택청약종합저축", "청약저축", "청약예금", "청약부금"];
     const winnings=["예", "아니오"];
     const radios=["예", "아니오"];
+    const r='';
 
     const [specialRanking, setSpecialRanking]=useState("1순위");
     const [ranking, setRanking]=useState("1순위");
@@ -24,6 +25,7 @@ const Subscription = ({view, nextView}) => {
     const [cnt, setCnt]=useState(0);
     const [teenPrice, setTeenPrice]=useState(0);
     const [teenSumPrice, setTeenSumPrice]=useState(0);
+
     const ClickSpecialRank=(e)=>{
         setSpecialRanking(e.target.value);
     }
@@ -50,7 +52,7 @@ const Subscription = ({view, nextView}) => {
         setWinning(e.target.value)
     }
     const ClickNext=()=>{
-        /*axios.post('/api/v1/subscription', {
+        axios.post('/api/v1/subscription', {
             
                 bankBookList: [
                   {
@@ -70,7 +72,7 @@ const Subscription = ({view, nextView}) => {
                 "winDate": "string",
                 "winFlag": "Y"
               
-        })*/
+        })
         nextView();
     }
   return (

@@ -32,7 +32,7 @@
     "web-vitals": "^2.1.4",
     "yarn": "^1.22.19"
   },
-  "proxy":"http://52.78.189.54:8080",
+  "proxy": "http://52.78.189.54:8080",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

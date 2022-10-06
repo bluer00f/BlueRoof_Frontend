@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 import Building from '../Component/Building'
 import Land from '../Component/Land'
 import Car from '../Component/Car'
+import axios from 'axios'
 
 const Asset = ({view, nextView, AddBuilding, building}) => {
   const options=["예", "아니오"];

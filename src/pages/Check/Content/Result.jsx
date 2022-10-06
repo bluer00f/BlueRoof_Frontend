@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import styled from 'styled-components'
 import { BlueRoundBtn } from "../../../components/commons/Buttons";
 import { RowContainer, ColContainer } from "../../../components/commons/Container";
 import { BlackText } from "../../../components/commons/Font";
 import { RoundBox } from "../../Signup";
 import PopupResult from "./PopupResult";
+import axios from "axios";
 
 const Result =() => {
     const [popupResult, setPopupResult] = useState(false)
@@ -15,6 +16,10 @@ const Result =() => {
     const onClickPopupClose = () => {
         setPopupResult(false);
     }
+
+    const [aptNm, setAptNm] = useState();
+    const [type, setType] = useState();
+
 
     //임시 데이터 -> 나중에 api로 받아와야함
       const checks=["서울은평뉴타운 디에트르더퍼스트", "힐스테이트 관악뉴포레", "보라매한국 아델리움앤클래스", "용인흥덕2", "서광교파크뷰", "의왕고천A-2블록 행복주택", "abcedf"]
