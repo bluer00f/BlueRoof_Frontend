@@ -10,7 +10,7 @@ const Car = () => {
   return (
     <RowContainer style={{gap:"10px", width: "90%"}}>
     
-        <select style={{width:"20%"}}>
+        <select style={{width:"20%"}}  onChange={(e)=>console.log(e.target.value)}>
           {
           buildingDropDown.map((option)=>(
             <option>
