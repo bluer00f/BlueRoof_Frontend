@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { RowContainer, ColContainer } from '../../components/commons/Container'
+import { Link } from 'react-router-dom'
+
 const Landing1 = () => {
   return (
     <Landing1Container>
@@ -9,7 +11,9 @@ const Landing1 = () => {
         <div style={{fontSize:"14px", color:"#616771", lineHeight:"28px"}}>당신의 청약 점수를 알고싶으신가요?<br/>BlueRoof를 이용하세요!</div>
         <Btns>
             <Btn>정보 입력없는<br/>간편검사하기</Btn>
-            <Btn>정보 입력하고<br/>상세검사하기</Btn>
+            <Link to='/login'>
+              <Btn>정보 입력하고<br/>상세검사하기</Btn>
+            </Link>
         </Btns>
         </Left>
         <Right>
