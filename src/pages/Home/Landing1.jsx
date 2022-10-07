@@ -1,11 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import { RowContainer, ColContainer } from '../../components/commons/Container'
+<<<<<<< HEAD
 import { Link } from 'react-router-dom'
 
+=======
+import Header from '../../components/Header'
+import { Link } from 'react-router-dom'
+>>>>>>> d81dac6e89089b4190f4be41df17e4ac8342bae0
 const Landing1 = () => {
   return (
+    
+      
     <Landing1Container>
+<<<<<<< HEAD
         <Left>
         <div style={{fontSize:"52px", marginBottom:"30px"}}>welcome to <br/> BlueRoof!</div>
         <div style={{fontSize:"14px", color:"#616771", lineHeight:"28px"}}>당신의 청약 점수를 알고싶으신가요?<br/>BlueRoof를 이용하세요!</div>
@@ -23,6 +31,28 @@ const Landing1 = () => {
             
         </Right>
   </Landing1Container>
+=======
+     
+     <Left>
+     <div style={{fontSize:"52px", marginBottom:"30px"}}>welcome to <br/> BlueRoof!</div>
+     <div style={{fontSize:"14px", color:"#616771", lineHeight:"28px"}}>당신의 청약 점수를 알고싶으신가요?<br/>BlueRoof를 이용하세요!</div>
+     <Btns>
+         <Btn>정보 입력없는<br/>간편검사하기</Btn>
+         <Link to='/login'>
+         <Btn>정보 입력하고<br/>상세검사하기</Btn>
+         </Link>
+
+     </Btns>
+     </Left>
+     <Right>
+         <Border>
+         <Img src='../../imgs/home_bg.svg'></Img>
+         </Border>
+         
+     </Right>
+</Landing1Container>
+    
+>>>>>>> d81dac6e89089b4190f4be41df17e4ac8342bae0
   )
 }
 
@@ -68,4 +98,7 @@ const Img=styled.img`
     object-fit: cover;
     right: 20px;
     top: 20px;
+`
+const HomeHeader=styled(Header)`
+
 `

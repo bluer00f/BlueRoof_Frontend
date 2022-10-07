@@ -7,12 +7,14 @@ import Flex from '../../../components/commons/Flex'
 import { RoundInput } from '../../../components/commons/Inputs'
 import { connect } from 'react-redux'
 import { nextView, prevView } from '../../../redux'
+import axios from 'axios'
 
 const Subscription = ({view, nextView}) => {
     const ranks=["1순위","2순위"];
     const banks=["주택청약종합저축", "청약저축", "청약예금", "청약부금"];
     const winnings=["예", "아니오"];
     const radios=["예", "아니오"];
+    const r='';
 
     const [specialRanking, setSpecialRanking]=useState("1순위");
     const [ranking, setRanking]=useState("1순위");
@@ -21,6 +23,8 @@ const Subscription = ({view, nextView}) => {
     const [radio, setRadio]=useState("");
     const [winning, setWinning]=useState("");
     const [cnt, setCnt]=useState(0);
+    const [teenPrice, setTeenPrice]=useState(0);
+    const [teenSumPrice, setTeenSumPrice]=useState(0);
 
     const ClickSpecialRank=(e)=>{
         setSpecialRanking(e.target.value);
@@ -33,14 +37,42 @@ const Subscription = ({view, nextView}) => {
     }
     const ClickBank=(e)=>{
         setBank(e.target.value);
+        
     }
     const ClickRadio=(e)=>{
-        setRadio(e.target.value);
+       setRadio(e.target.value);
+       let r=''
+       if (e.target.value==="예"){
+            r="Y"
+       }else{
+        r="N"
+       }
     }
     const ClickWinning=(e)=>{
         setWinning(e.target.value)
     }
     const ClickNext=()=>{
+        axios.post('/api/v1/subscription', {
+            
+                bankBookList: [
+                  {
+                    bankBookDate: "string",
+                    bankBookType: bank,
+                    "teenCount": cnt,
+                    "teenFlag": r,
+                    "teenPrice": teenPrice,
+                    "teenSumPrice": teenSumPrice,
+                    "totalCount": 0,
+                    "totalPrice": 0
+                  }
+                ],
+                "generalRank": 0,
+                "nowHouseStartDate": "string",
+                "specialRank": 0,
+                "winDate": "string",
+                "winFlag": "Y"
+              
+        })
         nextView();
     }
   return (
@@ -159,18 +191,18 @@ const Subscription = ({view, nextView}) => {
                     ?
                     <>
                     <InputContainer>
-                        <BlackText>미성년 총 납입 금액</BlackText>
+                        <BlackText onChange={(e)=>setTeenPrice(e.target.value)}>미성년 총 납입 금액</BlackText>
                         <RoundInput width={"65%"} height={"50px"} />
                         </InputContainer>
                         <InputContainer>
                         <BlackText>미성년일때의 납입 중 <br/>금액이 높은 순으로 24회의 합</BlackText>
-                        <RoundInput width={"50%"} height={"50px"} />
+                        <RoundInput width={"50%"} height={"50px"} onChange={(e)=>setTeenSumPrice(e.target.value)}/>
                     </InputContainer>
                     </>
                     :
                     <>
                     <InputContainer>
-                        <BlackText>총 금액</BlackText>
+                        <BlackText onChange={(e)=>setTeenPrice(e.target.value)}>총 금액</BlackText>
                         <RoundInput width={"80%"} height={"50px"} />
                         </InputContainer>
                         <InputContainer>
