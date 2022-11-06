@@ -21,9 +21,9 @@ const Landing1 = () => {
      </Btns>
      </Left>
      <Right>
-         <Border>
-         <Img src='../../imgs/home_bg.svg'></Img>
-         </Border>
+      <Border>
+      <Img src='../../imgs/home_bg.svg'></Img>
+      </Border>
          
      </Right>
 </Landing1Container>

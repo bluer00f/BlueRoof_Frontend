@@ -16,8 +16,16 @@ const EditSubscription = ({view}) => {
         <RightContainer>
             <ContentContainer>
                <Content>
-                 {view===0 ? <SubScription/> : 
-                 view===1? <Asset/>: <Family/>
+                 {
+                 view===0 
+                 ? 
+                 <SubScription/> 
+                 : 
+                 view===1 
+                 ? 
+                 <Asset/> 
+                 : 
+                 <Family/>
                  }
                </Content>
           </ContentContainer>

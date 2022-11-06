@@ -201,14 +201,7 @@ const Subscription = ({view, nextView}) => {
                     </>
                     :
                     <>
-                    <InputContainer>
-                        <BlackText onChange={(e)=>setTeenPrice(e.target.value)}>총 금액</BlackText>
-                        <RoundInput width={"80%"} height={"50px"} />
-                        </InputContainer>
-                        <InputContainer>
-                        <BlackText>납입 횟수</BlackText>
-                        <RoundInput  width={"80%"} height={"50px"}/>
-                    </InputContainer>
+                   
                     </>
                 }
                </>
@@ -218,6 +211,14 @@ const Subscription = ({view, nextView}) => {
                 </>
 
             }
+             <InputContainer>
+                        <BlackText onChange={(e)=>setTeenPrice(e.target.value)}>총 금액</BlackText>
+                        <RoundInput width={"80%"} height={"50px"} />
+                        </InputContainer>
+                        <InputContainer>
+                        <BlackText>납입 횟수</BlackText>
+                        <RoundInput  width={"80%"} height={"50px"}/>
+            </InputContainer>
         </ColContainer>
         <BtnContainer>
             <BlueRoundBtn onClick={ClickNext}>다음 &gt;</BlueRoundBtn>
