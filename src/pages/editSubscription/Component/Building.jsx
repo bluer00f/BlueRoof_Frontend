@@ -40,7 +40,6 @@ const Building = ({building, AddBuilding}) => {
     setBuildingStartDay(e.target.value)
   }
   const [buildingArr, setBuildingArr]= useRecoilState(buildingArrState);
-  const [arr, setArr] = useState([]);
 
   const [buildingObj, setBuildingObj] = useState({});
   console.log(buildingArr)
@@ -54,8 +53,6 @@ const Building = ({building, AddBuilding}) => {
       buildingZipcode: addrNum
     })
     setBuildingArr([...buildingArr, buildingObj]);
-    
-    
     console.log(buildingArr);
   }
   
