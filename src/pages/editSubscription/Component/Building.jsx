@@ -40,10 +40,12 @@ const Building = ({building, AddBuilding}) => {
     setBuildingStartDay(e.target.value)
   }
   const [buildingArr, setBuildingArr]= useRecoilState(buildingArrState);
+  const [arr, setArr] = useState([]);
 
+  const [buildingObj, setBuildingObj] = useState({});
+  console.log(buildingArr)
   const clickSave= ()=>{
-   console.log(buildingArr)
-    buildingArr.push({
+    setBuildingObj({
       buildingAddress: addr,
       buildingArea: buildingSize,
       buildingDate: buildingStartDay,
@@ -51,14 +53,15 @@ const Building = ({building, AddBuilding}) => {
       buildingType: buildingType,
       buildingZipcode: addrNum
     })
-    setBuildingArr([{'p': 1}]);
+    setBuildingArr([...buildingArr, buildingObj]);
+    
+    
     console.log(buildingArr);
   }
   
   return (
     <BuildingContainer>
         <RowContainer style={{gap:"10px", width: "90%", }}>
-                  
                       <select style={{width:"20%"}}  onChange={(e)=>changeBuildingType(e)}>
                       {
                       buildingDropDown.map((option)=>(
