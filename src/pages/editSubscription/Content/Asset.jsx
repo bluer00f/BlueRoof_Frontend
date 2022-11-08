@@ -80,6 +80,12 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
     return carComponent
   }
 
+  const onClickNext=()=>{
+    axios.post('/api/v1/asset',{
+
+    })
+  }
+  
   return (
     <AssetContainer>
       <RowContainer style={{gap:"10px", marginBottom:"50px"}}>
