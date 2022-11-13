@@ -5,6 +5,7 @@ import { RoundInput } from '../../../components/commons/Inputs'
 import { Dropdown } from 'react-bootstrap'
 import { useRecoilState } from 'recoil'
 import { LandArrState } from '../../../atoms/state'
+import { BlueRoundBtn, BorderWhiteBtn } from '../../../components/commons/Buttons'
 
 const Land = () => {
     const buildingDropDown=["", ""];
@@ -18,15 +19,25 @@ const Land = () => {
     const [landObj, setLandObj] = useState({});
     const [landArr, setLandArr] = useRecoilState(LandArrState);
     const clickSave = (e)=>{
-      setLandObj({
+      console.log(
+        {
         landAddr: landAddr,
         landArea: landArea,
-        landDate: landArea,
+        landDate: landDate,
         landPrice: landPrice,
         landZipcode: landZipcode
-      })
-      setLandArr([...landArr, landObj]);
+      }
+      )
+      setLandArr([...landArr,{
+        landAddr: landAddr,
+        landArea: landArea,
+        landDate: landDate,
+        landPrice: landPrice,
+        landZipcode: landZipcode
+      }]);
+      console.log(landArr)
     }
+    console.log(landArr)
   return (
     <LandContainer>
         <RowContainer style={{gap:"10px", width: "90%", whiteSpace:"nowrap", overflowX:"auto"}}>
@@ -39,7 +50,9 @@ const Land = () => {
                     <RoundInput  height={"50px"} placeholder="가격" onChange={(e)=>setLandPrice(e.target.value)}/>
                     <RoundInput  height={"50px"} placeholder="건물 취득일" onChange={(e)=>setLandDate(e.target.value)}/>
                   </RowContainer>
-                  <button onClick={clickSave}>저장</button>
+                  <BorderWhiteBtn
+                   style={{border:"solid black 1px", borderRadius:"20px", padding:"5px 10px"}}
+                   onClick={clickSave}>저장</BorderWhiteBtn>
         </LandContainer>
    
   )

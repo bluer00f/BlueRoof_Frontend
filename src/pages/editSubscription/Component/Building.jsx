@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import {  AddBuilding} from '../../../redux'
 import { useRecoilState } from 'recoil'
 import { buildingArrState } from '../../../atoms/state'
+import { BlueRoundBtn, BorderWhiteBtn } from '../../../components/commons/Buttons'
 
 const Building = ({building, AddBuilding}) => {
     const buildingDropDown=["단독주택", "공동주택","오피스텔","공장","상가","부속토지"];
@@ -44,15 +45,15 @@ const Building = ({building, AddBuilding}) => {
   const [buildingObj, setBuildingObj] = useState({});
   console.log(buildingArr)
   const clickSave= ()=>{
-    setBuildingObj({
+   
+    setBuildingArr([...buildingArr,{
       buildingAddress: addr,
       buildingArea: buildingSize,
       buildingDate: buildingStartDay,
       buildingPrice: buildingPrice,
       buildingType: buildingType,
       buildingZipcode: addrNum
-    })
-    setBuildingArr([...buildingArr, buildingObj]);
+    }]);
     console.log(buildingArr);
   }
   
@@ -77,7 +78,9 @@ const Building = ({building, AddBuilding}) => {
                     <RoundInput  height={"50px"} placeholder="가격" onChange={(e)=>{changeBuildingPrice(e)}} />
                     <RoundInput  height={"50px"} placeholder="건물 취득일" onChange={(e)=>{changeBuildingStartDay(e)}} />
                   </RowContainer>
-                  <button onClick={clickSave}>저장</button>
+                  <BorderWhiteBtn
+                   style={{border:"solid black 1px", borderRadius:"20px", padding:"5px 10px"}}
+                   onClick={clickSave}>저장</BorderWhiteBtn>
         </BuildingContainer>
   )
 }

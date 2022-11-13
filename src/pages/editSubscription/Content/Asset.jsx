@@ -13,6 +13,8 @@ import Building from '../Component/Building'
 import Land from '../Component/Land'
 import Car from '../Component/Car'
 import axios from 'axios'
+import { useRecoilState } from 'recoil'
+import { buildingArrState, CarArrState, LandArrState } from '../../../atoms/state'
 
 const Asset = ({view, nextView, AddBuilding, building}) => {
   const options=["예", "아니오"];
@@ -21,33 +23,34 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
   const [land,setLand]=useState("예");
   const [car, setCar]=useState("예");
   const [month, setMonth]=useState(0);
-  const [landArray, setLandArray]=useState([]);
+  const [houseEndDate, setHouseEndDate] = useState('')
+  let buildingFlag='';
   const ClickBuilding=(e)=>{
     setIsBuilding(e.target.value);
-    let buildingFlag='';
     if(e.target.value==="예"){
       buildingFlag="Y"
     }else{
       buildingFlag="N"
     }
   }
+  let landFlag='';
   const ClickLand=(e)=>{
     setLand(e.target.value);
-    let landFlag='';
     if(e.target.value==="예"){
       landFlag="Y"
     }else{
       landFlag="N"
     }
   }
+  let carFlag='';
   const ClickCar=(e)=>{
     setCar(e.target.value);
-    let carFlag='';
     if(e.target.value==="예"){
       carFlag="Y"
     }else{
       carFlag="N"
     }
+    console.log(carFlag)
   }
   const ClickNext=()=>{
     nextView();
@@ -70,6 +73,11 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
   }
   
 
+  const landArr= useRecoilState(LandArrState);
+  const buildingArr = useRecoilState(buildingArrState);
+  const carArr= useRecoilState(CarArrState);
+
+
   const renderBuilding=()=>{
     return buildingComponent
   }
@@ -81,9 +89,20 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
   }
 
   const onClickNext=()=>{
-    axios.post('/api/v1/asset',{
-
-    })
+    console.log('1'+ landArr);
+  console.log('2'+ buildingArr);
+  console.log('3'+ carArr);
+  console.log('hi')
+    axios.post('http://52.78.189.54:8080/api/v1/asset',{
+      building: buildingArr,
+      buildingFlag: buildingFlag,
+      car: carArr,
+      carFlag: carFlag,
+      houseEndDate: houseEndDate,
+      incomeMonthPrice: month,
+      land: landArr,
+      landFlag: landFlag
+    }).then((res)=>console.log(res.data))
   }
   
   return (
@@ -127,7 +146,9 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
               
               <RowContainer style={{width:"80%", marginTop:"50px"}}>
                 <BlackText style={{width:"20%"}}>무주택 시작일</BlackText>
-                <DateInput width={"80%"} height={"50px"}  placeholder="무주택 시작일" type="date"/>
+                <DateInput 
+                onChange={(e)=>setHouseEndDate(e.target.value)}
+                width={"80%"} height={"50px"}  placeholder="무주택 시작일"  />
             </RowContainer>
           </ColContainer>
   
@@ -199,7 +220,7 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
             }
            
             <BtnContainer>
-              <BlueRoundBtn onClick={ClickNext}>다음 &gt;</BlueRoundBtn>
+              <BlueRoundBtn onClick={onClickNext}>다음 &gt;</BlueRoundBtn>
             </BtnContainer>
            
       

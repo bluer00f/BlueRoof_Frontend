@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { CarArrState } from '../../../atoms/state'
 import { ColContainer, RowContainer } from '../../../components/commons/Container'
 import { RoundInput } from '../../../components/commons/Inputs'
-
+import { BlueRoundBtn, BorderWhiteBtn } from '../../../components/commons/Buttons'
 
 
 const Car = () => {
@@ -17,12 +17,12 @@ const Car = () => {
     const [carObj, setCarObj] = useState({});
     const [carArr, setCarArr] = useRecoilState(CarArrState)
     const clickSave = (e)=>{
-      setCarObj({
+      
+      setCarArr([...carArr,{
         carPrice: carPrice,
         carType: carType,
         carYear: carYear
-      })
-      setCarArr([...carArr, carObj]);
+      }]);
     }
   return (
     <ColContainer>
@@ -40,11 +40,13 @@ const Car = () => {
     </select>
  
 
-<RoundInput width={"40%"} height={"50px"} placeholder="가격" onChange={(e)=>setCarPrice(e.target.value)}/>
-<RoundInput width={"40%"} height={"50px"} placeholder="제조 년도" onChange={(e)=>setCarYear(e.target.value)} />
-</RowContainer>
-<button onClick={clickSave}>저장</button>
-    </ColContainer>
+  <RoundInput width={"40%"} height={"50px"} placeholder="가격" onChange={(e)=>setCarPrice(e.target.value)}/>
+  <RoundInput width={"40%"} height={"50px"} placeholder="제조 년도" onChange={(e)=>setCarYear(e.target.value)} />
+  </RowContainer>
+          <BorderWhiteBtn
+                   style={{border:"solid black 1px", borderRadius:"20px", padding:"5px 10px", marginTop:"10px"}}
+                   onClick={clickSave}>저장</BorderWhiteBtn>
+          </ColContainer>
     
   )
 }
