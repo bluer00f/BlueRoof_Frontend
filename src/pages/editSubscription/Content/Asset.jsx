@@ -24,38 +24,7 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
   const [car, setCar]=useState("예");
   const [month, setMonth]=useState(0);
   const [houseEndDate, setHouseEndDate] = useState('')
-  let buildingFlag='';
-  const ClickBuilding=(e)=>{
-    setIsBuilding(e.target.value);
-    if(e.target.value==="예"){
-      buildingFlag="Y"
-    }else{
-      buildingFlag="N"
-    }
-  }
-  let landFlag='';
-  const ClickLand=(e)=>{
-    setLand(e.target.value);
-    if(e.target.value==="예"){
-      landFlag="Y"
-    }else{
-      landFlag="N"
-    }
-  }
-  let carFlag='';
-  const ClickCar=(e)=>{
-    setCar(e.target.value);
-    if(e.target.value==="예"){
-      carFlag="Y"
-    }else{
-      carFlag="N"
-    }
-    console.log(carFlag)
-  }
-  const ClickNext=()=>{
-    nextView();
-  }
- 
+
   const [buildingComponent, setBuildingComponent]=useState([<Building/>])
   const [landComponent, setLandComponent]=useState([<Land/>])
   const [carComponent, setCarComponent]=useState([<Car/>])
@@ -77,6 +46,23 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
   const buildingArr = useRecoilState(buildingArrState);
   const carArr= useRecoilState(CarArrState);
 
+  const transferRadio =(r) =>{
+    if (r ==='예'){
+        return 'Y'
+    }else{
+        return 'N'
+    }
+}
+
+  const ClickBuilding = (e) =>{
+    setIsBuilding(e.target.value)
+  }
+  const ClickLand = (e) =>{
+    setLand(e.target.value)
+  } 
+  const ClickCar = (e) =>{
+    setCar(e.target.value)
+  }
 
   const renderBuilding=()=>{
     return buildingComponent
@@ -88,20 +74,21 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
     return carComponent
   }
 
+  const token=localStorage.getItem("accessToken");
+    axios.defaults.headers.common['Authorization'] =`Bearer ${token}`;
+
   const onClickNext=()=>{
-    console.log('1'+ landArr);
-  console.log('2'+ buildingArr);
-  console.log('3'+ carArr);
-  console.log('hi')
-    axios.post('http://52.78.189.54:8080/api/v1/asset',{
-      building: buildingArr,
-      buildingFlag: buildingFlag,
-      car: carArr,
-      carFlag: carFlag,
+    console.log(landArr);
+ 
+    axios.post('/api/v1/asset',{
+      building: buildingArr[0],
+      buildingFlag: transferRadio(Isbuilding),
+      car: carArr[0],
+      carFlag: transferRadio(car),
       houseEndDate: houseEndDate,
-      incomeMonthPrice: month,
-      land: landArr,
-      landFlag: landFlag
+      incomeMonthPrice: parseInt(month),
+      land: landArr[0],
+      landFlag: transferRadio(land)
     }).then((res)=>console.log(res.data))
   }
   

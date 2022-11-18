@@ -10,18 +10,17 @@ import { BlueRoundBtn, BorderWhiteBtn } from '../../../components/commons/Button
 const Car = () => {
     const buildingDropDown=["자가용승용차", "영업용승용차", "자가용버스", "영업용버스", "자가용화물차", "영업용화물차", "특수차"];
 
-    const [carType, setCarType] = useState('');
+    const [carType, setCarType] = useState('자가용승용차');
     const [carPrice, setCarPrice] = useState(0);
     const [carYear, setCarYear] = useState(0);
 
-    const [carObj, setCarObj] = useState({});
     const [carArr, setCarArr] = useRecoilState(CarArrState)
     const clickSave = (e)=>{
       
       setCarArr([...carArr,{
-        carPrice: carPrice,
+        carPrice: parseInt(carPrice),
         carType: carType,
-        carYear: carYear
+        carYear: parseInt(carYear)
       }]);
     }
   return (

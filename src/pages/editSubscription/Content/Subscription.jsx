@@ -71,18 +71,22 @@ const Subscription = ({view, nextView}) => {
             return 2
         }
     }
+    const token=localStorage.getItem("accessToken");
+    axios.defaults.headers.common['Authorization'] =`Bearer ${token}`;
+
     const ClickNext=()=>{
-        axios.post('http://52.78.189.54:8080/api/v1/subscription', {
+     
+        axios.post('/api/v1/subscription', {
                 bankBookList: [
                   {
                     bankBookDate: bankRegisterDate,
                     bankBookType: bank,
-                    teenCount: teenCnt,
+                    teenCount: parseInt(teenCnt),
                     teenFlag: transferRadio(isTeen),
-                    teenPrice: teenPrice,
-                    teenSumPrice: teenHighestSum,
-                    totalCount: totalCnt,
-                    totalPrice: totalPrice
+                    teenPrice: parseInt(teenPrice),
+                    teenSumPrice: parseInt(teenHighestSum),
+                    totalCount: parseInt(totalCnt),
+                    totalPrice: parseInt(totalPrice)
                   }
                 ],
                 generalRank: transferRank(ranking),
@@ -139,7 +143,7 @@ const Subscription = ({view, nextView}) => {
         <ColContainer style={{gap:"20px", margin:"30px 0"}}>
             <InputContainer>
                 <BlackText>현 주택 시작일</BlackText>
-                <RoundInput width={"80%"} height={"50px"} placeholder="YYYYMMDD" onChange={(e)=>setNowHouseStartDate(e.target.value)}/>
+                <RoundInput width={"80%"} height={"50px"} placeholder="YYYY-MM-DD" onChange={(e)=>setNowHouseStartDate(e.target.value)}/>
             </InputContainer>
         </ColContainer>
         <Line/>
@@ -163,7 +167,7 @@ const Subscription = ({view, nextView}) => {
             <ColContainer style={{gap:"20px", margin:"30px 0"}}>
             <InputContainer>
                 <BlackText>당첨 일자</BlackText>
-                <RoundInput width={"80%"} height={"50px"} placeholder="YYYYMMDD" onChange={(e)=>changeWinningDate(e)}/>
+                <RoundInput width={"80%"} height={"50px"} placeholder="YYYY-MM-DD" onChange={(e)=>changeWinningDate(e)}/>
             </InputContainer> 
         </ColContainer>
             :
@@ -193,11 +197,11 @@ const Subscription = ({view, nextView}) => {
         <ColContainer style={{marginBottom:"50px", gap: "30px"}}>
             <InputContainer>
                 <BlackText>가입일자</BlackText>
-                <RoundInput width={"80%"} height={"50px"} onChange={(e)=>changeBankRegisterDate(e)}/> 
+                <RoundInput width={"80%"} height={"50px"} placeholder="YYYY-MM-DD" onChange={(e)=>changeBankRegisterDate(e)}/> 
             </InputContainer>
             <InputContainer>
                 <BlackText>만 19세 이전 가입했나요?</BlackText>
-               
+            
                     {teen.map((r)=>(
                         <label>
                         <RadioBtn
@@ -215,7 +219,7 @@ const Subscription = ({view, nextView}) => {
                <>
                 <InputContainer>
                 <BlackText>미성년 납입 횟수</BlackText>
-                <RoundInput width={"70%"} height={"50px"} onChange={(e)=> setTeenCnt(e.target.value)}/>
+                <RoundInput width={"70%"} height={"50px"} type="number" onChange={(e)=> setTeenCnt(e.target.value)}/>
                 </InputContainer>
                 {
                     teenCnt>= 24
@@ -223,11 +227,11 @@ const Subscription = ({view, nextView}) => {
                     <>
                     <InputContainer>
                         <BlackText>미성년 총 납입 금액</BlackText>
-                        <RoundInput width={"65%"} height={"50px"} onChange={(e)=>setTeenPrice(e.target.value)} />
+                        <RoundInput width={"65%"} height={"50px"} type="number" onChange={(e)=>setTeenPrice(e.target.value)} />
                         </InputContainer>
                         <InputContainer>
                         <BlackText>미성년일때의 납입 중 <br/>금액이 높은 순으로 24회의 합</BlackText>
-                        <RoundInput width={"50%"} height={"50px"} onChange={(e)=>setTeenHighestSum(e.target.value)}/>
+                        <RoundInput width={"50%"} height={"50px"} type="number" onChange={(e)=>setTeenHighestSum(e.target.value)}/>
                     </InputContainer>
                     </>
                     :
@@ -244,11 +248,11 @@ const Subscription = ({view, nextView}) => {
             }
              <InputContainer>
                         <BlackText>총 금액</BlackText>
-                        <RoundInput width={"80%"} height={"50px"} onChange={(e)=>setTotalPrice(e.target.value)}/>
+                        <RoundInput width={"80%"} height={"50px"} type="number" onChange={(e)=>setTotalPrice(e.target.value)}/>
                         </InputContainer>
                         <InputContainer>
                         <BlackText>납입 횟수</BlackText>
-                        <RoundInput  width={"80%"} height={"50px"} onChange={(e)=>setTotalCnt(e.target.value)}/>
+                        <RoundInput  width={"80%"} height={"50px"} type="number" onChange={(e)=>setTotalCnt(e.target.value)}/>
             </InputContainer>
         </ColContainer>
         <BtnContainer>

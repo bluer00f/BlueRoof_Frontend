@@ -19,25 +19,17 @@ const Land = () => {
     const [landObj, setLandObj] = useState({});
     const [landArr, setLandArr] = useRecoilState(LandArrState);
     const clickSave = (e)=>{
-      console.log(
-        {
-        landAddr: landAddr,
-        landArea: landArea,
-        landDate: landDate,
-        landPrice: landPrice,
-        landZipcode: landZipcode
-      }
-      )
+
       setLandArr([...landArr,{
-        landAddr: landAddr,
-        landArea: landArea,
+        landAddress: landAddr,
+        landArea: parseInt(landArea),
         landDate: landDate,
-        landPrice: landPrice,
+        landPrice: parseInt(landPrice),
         landZipcode: landZipcode
       }]);
-      console.log(landArr)
+     
     }
-    console.log(landArr)
+    
   return (
     <LandContainer>
         <RowContainer style={{gap:"10px", width: "90%", whiteSpace:"nowrap", overflowX:"auto"}}>

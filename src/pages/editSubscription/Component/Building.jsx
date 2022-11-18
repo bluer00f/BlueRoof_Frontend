@@ -12,13 +12,12 @@ import { BlueRoundBtn, BorderWhiteBtn } from '../../../components/commons/Button
 const Building = ({building, AddBuilding}) => {
     const buildingDropDown=["단독주택", "공동주택","오피스텔","공장","상가","부속토지"];
 
-   const [buildingType, setBuildingType]=useState('');
+   const [buildingType, setBuildingType]=useState("단독주택");
    const [addr, setAddr]=useState('');
    const [addrNum, setAddrNum] = useState('');
    const [buildingSize, setBuildingSize] = useState('');
   const [buildingPrice, setBuildingPrice] = useState(0);
   const [buildingStartDay, setBuildingStartDay] = useState('');
-   //state값을 addr[cnt]에 넣기 
   
    const changeAddr = (e) =>{
     setAddr(e.target.value)
@@ -42,19 +41,18 @@ const Building = ({building, AddBuilding}) => {
   }
   const [buildingArr, setBuildingArr]= useRecoilState(buildingArrState);
 
-  const [buildingObj, setBuildingObj] = useState({});
   console.log(buildingArr)
   const clickSave= ()=>{
    
     setBuildingArr([...buildingArr,{
       buildingAddress: addr,
-      buildingArea: buildingSize,
+      buildingArea: parseInt(buildingSize),
       buildingDate: buildingStartDay,
-      buildingPrice: buildingPrice,
+      buildingPrice: parseInt(buildingPrice),
       buildingType: buildingType,
       buildingZipcode: addrNum
     }]);
-    console.log(buildingArr);
+    
   }
   
   return (
