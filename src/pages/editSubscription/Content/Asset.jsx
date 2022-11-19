@@ -78,8 +78,6 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
     axios.defaults.headers.common['Authorization'] =`Bearer ${token}`;
 
   const onClickNext=()=>{
-    console.log(landArr);
- 
     axios.post('/api/v1/asset',{
       building: buildingArr[0],
       buildingFlag: transferRadio(Isbuilding),
@@ -90,6 +88,8 @@ const Asset = ({view, nextView, AddBuilding, building}) => {
       land: landArr[0],
       landFlag: transferRadio(land)
     }).then((res)=>console.log(res.data))
+
+    nextView();
   }
   
   return (

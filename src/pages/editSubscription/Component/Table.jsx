@@ -1,7 +1,18 @@
-import React from 'react'
+import React , {useState}from 'react'
 import { BootstrapTable, TableHeaderColumn,InsertButton} from 'react-bootstrap-table'
 const Table = () => {
 
+
+  const [isHouse, setIsHouse] = useState('예');
+  const [memberBirthday, setMemberBirthday] = useState('');
+  const [memberIncome, setMemberIncome] = useState(0);
+  const [memberName, setMemberName] = useState('');
+  const [isOwner, setIsOwner] = useState('예');
+  const [relation, setRelation] = useState('');
+  const [winDate, setWinDate] = useState('');
+  const [isWin, setIsWin] = useState('예');
+
+console.log(memberName);
         const products=[]
         
         const createCustomInsertButton = (onClick) => {
@@ -18,6 +29,19 @@ const Table = () => {
           
             for (const prop in row) {
               newRowStr += prop + ': ' + row[prop] + ' \n';
+            }
+            setMemberName(row[0]);
+            setMemberBirthday(row[1]);
+            setRelation(row[2]);
+            setIsOwner(row[3]);
+            setMemberIncome(row[4]);
+            setIsHouse(row[5]);
+            if (row[6]){
+              setIsWin('Y');
+              setWinDate(row[6])
+            }else{
+              setIsWin('N');
+              setWinDate('');
             }
             alert('The new row is:\n ' + newRowStr);
           }

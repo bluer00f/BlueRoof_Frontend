@@ -17,6 +17,19 @@ const Family = () => {
     const [separate, setSeparate]=useState("예");
     const [isWon, setIsWon]=useState("예");
     
+    const [spouseName, setSpouseName] = useState('');
+    const [marrigeDate, setMarrigeDate] = useState('');
+    const [spouseAddress, setSpouseAddress] = useState('');
+    const [spouseBirthday, setSpouseBirthday] = useState('');
+    const [spouseIncome, setSpouseIncome] = useState(0);
+    const [winDate, setWinDate] = useState('');
+    const transferRadio =(r) =>{
+        if (r ==='예'){
+            return 'Y'
+        }else{
+            return 'N'
+        }
+    }
 
     const ClickMarried=(e)=>{
         setIsMarried(e.target.value);
@@ -58,7 +71,7 @@ const Family = () => {
             <Content>
                 <RowContainer style={{width:"100%"}}>
                     <InputTitle>이름</InputTitle>
-                    <Input></Input>
+                    <Input onChange={(e)=>setSpouseName(e.target.value)}></Input>
                 </RowContainer>
                 <RowContainer style={{width:"100%", gap:"10%"}}>
                     <InputTitle>세대주 여부</InputTitle>
@@ -104,11 +117,11 @@ const Family = () => {
                 </RowContainer>
                 <RowContainer style={{width:"100%"}}>
                     <InputTitle>생년월일</InputTitle>
-                    <Input placeholder='YYYY-MM-DD'></Input>
+                    <Input placeholder='YYYY-MM-DD' onChange={(e)=>setSpouseBirthday(e.target.value)}></Input>
                 </RowContainer>
                 <RowContainer style={{width:"100%"}}>
                     <InputTitle>혼인신고일</InputTitle>
-                    <Input placeholder='YYYY-MM-DD'></Input>
+                    <Input placeholder='YYYY-MM-DD' onChange={(e)=>setMarrigeDate(e.target.value)}></Input>
                 </RowContainer>
                 <RowContainer style={{width:"100%", gap:"10%"}}>
                     <InputTitle>청약당첨이력</InputTitle>
@@ -127,14 +140,14 @@ const Family = () => {
                 {
                     isWon ==="예"
                     ?
-                    <Input placeholder='YYYY-MM-DD' style={{marginLeft:"10%"}}></Input>
+                    <Input placeholder='YYYY-MM-DD' style={{marginLeft:"10%"}} onChange={(e)=>setWinDate(e.target.value)}></Input>
                     :
                     <></>
                 }
                 
                 <RowContainer width={"100%"}>
                     <InputTitle>월 평균 소득</InputTitle>
-                    <Input style={{marginRight:"5px"}}></Input>
+                    <Input style={{marginRight:"5px"}} onChange={(e)=>setSpouseIncome(e.target.value)}></Input>
                     <div>원</div>
                 </RowContainer>
             </Content>
